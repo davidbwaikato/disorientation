@@ -13,10 +13,10 @@ class Path extends Component {
         super(props);
         
         this.state = {
-            pullRight: false,
-            touchHandleWidth: 20,
-            checked1: false,
-            checked2: false
+            pullRight: JSON.parse(localStorage.getItem("pullRight")),
+            touchHandleWidth: JSON.parse(localStorage.getItem("touchHandleWidth")),
+            checked1: JSON.parse(localStorage.getItem("checked1")),
+            checked2: JSON.parse(localStorage.getItem("checked2"))
         }
         
         this.handlePull = this.handlePull.bind(this);
@@ -25,13 +25,21 @@ class Path extends Component {
     
     handlePull(checked1) {
         this.setState({ checked1 });
+        localStorage.setItem("checked1", JSON.stringify(checked1));
         this.setState({ pullRight: !this.state.pullRight });
+        localStorage.setItem("pullRight", JSON.stringify(!this.state.pullRight));
     }
     
     handleDrag(checked2) {
         this.setState({ checked2 });
-        if(this.state.checked2 == false) { this.setState({ touchHandleWidth: 0 }); }
-        else { this.setState({ touchHandleWidth: 20 }); }
+        localStorage.setItem("checked2", JSON.stringify(checked2));
+        if(this.state.checked2 == false) { 
+            this.setState({ touchHandleWidth: 0 }); 
+            localStorage.setItem("touchHandleWidth", "0");
+        } else { 
+            this.setState({ touchHandleWidth: 20 }); 
+            localStorage.setItem("touchHandleWidth", "20");
+        }
     }
     
     render() {

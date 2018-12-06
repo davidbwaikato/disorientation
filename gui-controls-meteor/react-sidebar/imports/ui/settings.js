@@ -105,37 +105,49 @@ class Settings extends Component {
                 <Panel title={contentHeader}>
                     <div style={styles.content}>
                         <label style={styles.block}>
-                            <span>Change sidebar anchor to right</span>
-                            <Switch
-                                onChange={this.handleChange}
-                                checked={this.props.checked1}
-                                style={styles.switch}
-                                onColor="#2693e6"
-                                onHandleColor="#FFF"
-                                uncheckedIcon={false}
-                                checkedIcon={false}
-                                handleDiameter={14}
-                                height={22}
-                                width={48}
-                                id="right"
-                            />
+                            <Row justifyContent="space-between">
+                                <Column flexGrow={4}>
+                                    <span>Change sidebar anchor to right</span>
+                                </Column>
+                                <Column flexGrow={1}>
+                                    <Switch
+                                        onChange={this.handleChange}
+                                        checked={this.props.checked1}
+                                        style={styles.switch}
+                                        onColor="#2693e6"
+                                        onHandleColor="#FFF"
+                                        uncheckedIcon={false}
+                                        checkedIcon={false}
+                                        handleDiameter={14}
+                                        height={22}
+                                        width={48}
+                                        id="right"
+                                    />
+                                </Column>
+                            </Row>
                         </label>
                         <div style={styles.divider} />
                         <label style={styles.block}>
-                            <span>Disable drag to open sidebar</span>
-                            <Switch
-                                onChange={this.handleDrag}
-                                checked={this.props.checked2}
-                                style={styles.switch}
-                                onColor="#2693e6"
-                                onHandleColor="#FFF"
-                                uncheckedIcon={false}
-                                checkedIcon={false}
-                                handleDiameter={14}
-                                height={22}
-                                width={48}
-                                id="drag"
-                            />
+                            <Row justifyContent="space-between">
+                                <Column flexGrow={4}>
+                                    <span>Disable drag to open sidebar</span>
+                                </Column>
+                                <Column flexGrow={1}>
+                                    <Switch
+                                        onChange={this.handleDrag}
+                                        checked={this.props.checked2}
+                                        style={styles.switch}
+                                        onColor="#2693e6"
+                                        onHandleColor="#FFF"
+                                        uncheckedIcon={false}
+                                        checkedIcon={false}
+                                        handleDiameter={14}
+                                        height={22}
+                                        width={48}
+                                        id="drag"
+                                    />
+                                </Column>
+                            </Row>
                         </label>
                         <div style={styles.divider} />
                     </div>
