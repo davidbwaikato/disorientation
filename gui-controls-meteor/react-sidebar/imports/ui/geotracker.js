@@ -28,8 +28,6 @@ class GeoTracker extends Component {
             transitions: true,
             touch: true,
             shadow: true,
-            pullRight: false,
-            touchHandleWidth: 20,
             dragToggleDistance: 30
         }
         
@@ -107,8 +105,8 @@ class GeoTracker extends Component {
             open: this.state.open,
             touch: this.state.touch,
             shadow: this.state.shadow,
-            pullRight: this.state.pullRight,
-            touchHandleWidth: this.state.touchHandleWidth,
+            pullRight: this.props.pullRight,
+            touchHandleWidth: this.props.touchHandleWidth,
             dragToggleDistance: this.state.dragToggleDistance,
             transitions: this.state.transitions,
             onSetOpen: this.onSetOpen

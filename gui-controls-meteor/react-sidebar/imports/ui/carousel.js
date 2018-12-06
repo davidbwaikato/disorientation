@@ -17,13 +17,6 @@ const styles = {
     },
     content: {
         padding: "16px"
-    },
-    image: {
-        padding: "5px"
-    },
-    carousel: {
-        padding: "16px",
-        transform: "scale(0.7)"
     }
 };
 
@@ -37,8 +30,6 @@ class Images extends Component {
             transitions: true,
             touch: true,
             shadow: true,
-            pullRight: false,
-            touchHandleWidth: 20,
             dragToggleDistance: 50
         };
         
@@ -79,8 +70,8 @@ class Images extends Component {
             open: this.state.open,
             touch: this.state.touch,
             shadow: this.state.shadow,
-            pullRight: this.state.pullRight,
-            touchHandleWidth: this.state.touchHandleWidth,
+            pullRight: this.props.pullRight,
+            touchHandleWidth: this.props.touchHandleWidth,
             dragToggleDistance: this.state.dragToggleDistance,
             transitions: this.state.transitions,
             onSetOpen: this.onSetOpen
@@ -92,13 +83,22 @@ class Images extends Component {
                     <div style={styles.content}>
                         <Carousel>
                             <div>
-                                <img src="https://www.waikato.ac.nz/__data/assets/image/0011/298271/PWC_Building.jpg" style={styles.image} />
+                                <img src="../../waikato1.jpg" />
                             </div>
                             <div>
-                                <img src="https://www.waikato.ac.nz/__data/assets/image/0007/289456/campus_night.jpg" style={styles.image} />
+                                <img src="../../waikato2.jpg" />
                             </div>
                             <div>
-                                <img src="https://www.waikato.ac.nz/__data/assets/image/0011/336629/uni-drone.jpg" style={styles.image} />
+                                <img src="../../waikato3.jpg" />
+                            </div>
+                            <div>
+                                <img src="../../waikato4.jpg" />
+                            </div>
+                            <div>
+                                <img src="../../waikato5.JPG" />
+                            </div>
+                            <div>
+                                <img src="../../waikato6.jpg" />
                             </div>
                         </Carousel>
                     </div>

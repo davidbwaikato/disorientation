@@ -7,8 +7,6 @@ import SidebarContent from "./sidebar_content";
 
 const styles = {
     contentHeaderMenuLink: {
-        backgroundColor: "transparent",
-        background: "transparent",
         textDecoration: "none",
         color: "white",
         padding: 8
@@ -18,7 +16,7 @@ const styles = {
     }
 };
 
-class App extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         
@@ -28,8 +26,6 @@ class App extends Component {
             transitions: true,
             touch: true,
             shadow: true,
-            pullRight: false,
-            touchHandleWidth: 20,
             dragToggleDistance: 50
         };
         
@@ -70,8 +66,8 @@ class App extends Component {
             open: this.state.open,
             touch: this.state.touch,
             shadow: this.state.shadow,
-            pullRight: this.state.pullRight,
-            touchHandleWidth: this.state.touchHandleWidth,
+            pullRight: this.props.pullRight,
+            touchHandleWidth: this.props.touchHandleWidth,
             dragToggleDistance: this.state.dragToggleDistance,
             transitions: this.state.transitions,
             onSetOpen: this.onSetOpen
@@ -89,7 +85,7 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Home;
 
 
 

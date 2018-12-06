@@ -38,16 +38,11 @@ class Settings extends Component {
         super(props);
         
         this.state = { 
-            checked1: false,
-            checked2: false,
-            
             docked: false,
             open: false,
             transitions: true,
             touch: true,
             shadow: true,
-            pullRight: false,
-            touchHandleWidth: 20,
             dragToggleDistance: 50
         };
         
@@ -58,14 +53,11 @@ class Settings extends Component {
     }
     
     handleChange(checked1) {
-        this.setState({ checked1 });
-        this.setState({ pullRight: !this.state.pullRight });
+        this.props.onPullChange(checked1);
     }
     
     handleDrag(checked2) {
-        this.setState({ checked2 });
-        if(this.state.checked2 == false) { this.setState({ touchHandleWidth: 0 }); }
-        else { this.setState({ touchHandleWidth: 20 }); }
+        this.props.onDragChange(checked2);
     }
     
     onSetOpen(open) {
@@ -101,8 +93,8 @@ class Settings extends Component {
             open: this.state.open,
             touch: this.state.touch,
             shadow: this.state.shadow,
-            pullRight: this.state.pullRight,
-            touchHandleWidth: this.state.touchHandleWidth,
+            pullRight: this.props.pullRight,
+            touchHandleWidth: this.props.touchHandleWidth,
             dragToggleDistance: this.state.dragToggleDistance,
             transitions: this.state.transitions,
             onSetOpen: this.onSetOpen
@@ -116,7 +108,7 @@ class Settings extends Component {
                             <span>Change sidebar anchor to right</span>
                             <Switch
                                 onChange={this.handleChange}
-                                checked={this.state.checked1}
+                                checked={this.props.checked1}
                                 style={styles.switch}
                                 onColor="#2693e6"
                                 onHandleColor="#FFF"
@@ -133,7 +125,7 @@ class Settings extends Component {
                             <span>Disable drag to open sidebar</span>
                             <Switch
                                 onChange={this.handleDrag}
-                                checked={this.state.checked2}
+                                checked={this.props.checked2}
                                 style={styles.switch}
                                 onColor="#2693e6"
                                 onHandleColor="#FFF"
