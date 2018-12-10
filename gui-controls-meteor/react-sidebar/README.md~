@@ -24,6 +24,5 @@ Setting up from repo:
 ---------------------
 
 * Install Meteor
-* Run 'meteor npm install --save react-bootstrap'
-* Run 'meteor npm install --save simple-flexbox'
+* Run 'meteor npm install -- save react-bootstrap'
 

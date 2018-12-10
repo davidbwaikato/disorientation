@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
 import Path from "./path.js";
-import Login from "../imports/ui/login.js";
+import Login from "./login.js";
 
 Meteor.startup(() => {
     if(Meteor.isCordova){
