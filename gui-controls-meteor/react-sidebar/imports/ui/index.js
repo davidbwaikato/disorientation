@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { Column, Row } from "simple-flexbox";
 
 import Sidebar from "./sidebar";
 import Panel from "./panel";
@@ -12,7 +13,8 @@ const styles = {
         padding: 8
     },
     content: {
-        padding: "16px"
+        padding: "16px",
+        textAlign: "center"
     }
 };
 
@@ -46,16 +48,26 @@ class Home extends Component {
         const sidebar = <SidebarContent />;
 
         const contentHeader = (
-            <span>
-                <a
-                    onClick={this.menuButtonClick}
-                    href="#"
-                    style={styles.contentHeaderMenuLink}
-                >
-                    ☰
-                </a>
-                <span></span>
-            </span>
+            <Row>
+                <Column flexGrow={this.props.growStart}>
+                    <div></div>
+                </Column>
+                <Column flexGrow={1}>
+                    <span>
+                        <a
+                            onClick={this.menuButtonClick}
+                            href="#"
+                            style={styles.contentHeaderMenuLink}
+                        >
+                            ☰
+                        </a>
+                        <span></span>
+                    </span>
+                </Column>
+                <Column flexGrow={this.props.growEnd}>
+                    <div></div>
+                </Column>
+            </Row>
         );
         
         const sidebarProps = {
@@ -77,7 +89,7 @@ class Home extends Component {
             <Sidebar {...sidebarProps}>
                 <Panel title={contentHeader}>
                     <div style={styles.content}>
-                        <p>Hello world!</p>
+                        <h3>Hello world!</h3>
                     </div>
                 </Panel>
             </Sidebar>

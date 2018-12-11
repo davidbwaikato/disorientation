@@ -1,36 +1,42 @@
 import React, { Component } from "react";
 import Switch from "react-switch";
-import { Column, Row } from "simple-flexbox";
+import { Column, Row } from 'simple-flexbox';
+import { Link } from "react-router-dom";
 
+import "./settings.css";
 import Sidebar from "./sidebar";
 import Panel from "./panel";
 import SidebarContent from "./sidebar_content";
 
 const styles = {
     contentHeaderMenuLink: {
-        backgroundColor: "transparent",
-        background: "transparent",
         textDecoration: "none",
         color: "white",
-        padding: 8
+        padding: 8,
+        textAlign: "right"
     },
     content: {
-        padding: "16px"
+        padding: "8px 12px"
     },
     switch: {
         padding: "0",
+        textAlign: "right"
     },
     divider: {
-        margin: "16px 0",
+        margin: "0 12px",
         height: 1,
         backgroundColor: "#e0e0e0"
     },
     block: {
         display: "block",
-        padding: "12px 12px",
+        padding: "24px 12px",
         color: "#000000",
         textDecoration: "none",
         //fontWeight: "bold"
+    },
+    arrow: {
+        paddingTop: "4px",
+        color: "#9b9b9b"
     }
 };
 
@@ -74,16 +80,26 @@ class Settings extends Component {
         const sidebar = <SidebarContent />;
 
         const contentHeader = (
-            <span>
-                <a
-                    onClick={this.menuButtonClick}
-                    href="#"
-                    style={styles.contentHeaderMenuLink}
-                >
-                    ☰
-                </a>
-                <span></span>
-            </span>
+            <Row>
+                <Column flexGrow={this.props.growStart}>
+                    <div></div>
+                </Column>
+                <Column flexGrow={1}>
+                    <span>
+                        <a
+                            onClick={this.menuButtonClick}
+                            href="#"
+                            style={styles.contentHeaderMenuLink}
+                        >
+                            ☰
+                        </a>
+                        <span></span>
+                    </span>
+                </Column>
+                <Column flexGrow={this.props.growEnd}>
+                    <div></div>
+                </Column>
+            </Row>
         );
         
         const sidebarProps = {
@@ -107,7 +123,7 @@ class Settings extends Component {
                     <div style={styles.content}>
                         <label style={styles.block}>
                             <Row justifyContent="space-between">
-                                <Column flexGrow={4}>
+                                <Column flexGrow={10}>
                                     <span>Change sidebar anchor to right</span>
                                 </Column>
                                 <Column flexGrow={1}>
@@ -130,7 +146,7 @@ class Settings extends Component {
                         <div style={styles.divider} />
                         <label style={styles.block}>
                             <Row justifyContent="space-between">
-                                <Column flexGrow={4}>
+                                <Column flexGrow={10}>
                                     <span>Disable drag to open sidebar</span>
                                 </Column>
                                 <Column flexGrow={1}>
@@ -150,6 +166,17 @@ class Settings extends Component {
                                 </Column>
                             </Row>
                         </label>
+                        <div style={styles.divider} />
+                        <Link to="/Settings" style={styles.block}>
+                            <Row>
+                                <Column flexGrow={10}>
+                                    <span>Setting</span>
+                                </Column>
+                                <Column flexGrow={1}>
+                                    <i className="fa fa-chevron-right" style={styles.arrow}></i>
+                                </Column>
+                            </Row>
+                        </Link>
                         <div style={styles.divider} />
                     </div>
                 </Panel>

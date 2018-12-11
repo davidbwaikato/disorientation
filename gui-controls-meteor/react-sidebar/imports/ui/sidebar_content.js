@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Panel from "./panel";
+import history from "../../client/history"
 
 const styles = {
     sidebar: {
@@ -34,22 +35,22 @@ const SidebarContent = props => {
     return (
         <Panel title="Menu" style={style}>
             <div style={style.content}>
-                <a href="/index" style={styles.sidebarLink}>
+                <a style={styles.sidebarLink} onClick={() => history.push("/index")}>
                     <i className="fa fa-home"></i>
                     <span> Home</span>
                 </a>
                 <div style={styles.divider} />
-                <a href="/geotracker" style={styles.sidebarLink}>
+                <a style={styles.sidebarLink} onClick={() => history.push("/geotracker")}>
                     <i className="fa fa-compass"></i>
                     <span> Location</span>
                 </a>
                 <div style={styles.divider} />
-                <a href="/images" style={styles.sidebarLink}>
+                <a style={styles.sidebarLink} onClick={() => history.push("/images")}>
                     <i className="fa fa-image"></i>
                     <span> Images</span>
                 </a>
                 <div style={styles.divider} />
-                <a href="/settings" style={styles.sidebarLink}>
+                <a style={styles.sidebarLink} onClick={() => history.push("/settings")}>
                     <i className="fa fa-gear"></i>
                     <span> Settings</span>
                 </a>

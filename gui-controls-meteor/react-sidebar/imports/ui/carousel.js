@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Carousel } from 'react-responsive-carousel';
+import { Column, Row } from "simple-flexbox";
 
 import Sidebar from "./sidebar";
 import Panel from "./panel";
@@ -50,16 +51,26 @@ class Images extends Component {
         const sidebar = <SidebarContent />;
 
         const contentHeader = (
-            <span>
-                <a
-                    onClick={this.menuButtonClick}
-                    href="#"
-                    style={styles.contentHeaderMenuLink}
-                >
-                    ☰
-                </a>
-                <span></span>
-            </span>
+            <Row>
+                <Column flexGrow={this.props.growStart}>
+                    <div></div>
+                </Column>
+                <Column flexGrow={1}>
+                    <span>
+                        <a
+                            onClick={this.menuButtonClick}
+                            href="#"
+                            style={styles.contentHeaderMenuLink}
+                        >
+                            ☰
+                        </a>
+                        <span></span>
+                    </span>
+                </Column>
+                <Column flexGrow={this.props.growEnd}>
+                    <div></div>
+                </Column>
+            </Row>
         );
         
         const sidebarProps = {
@@ -81,7 +92,7 @@ class Images extends Component {
             <Sidebar {...sidebarProps}>
                 <Panel title={contentHeader}>
                     <div style={styles.content}>
-                        <Carousel>
+                        <Carousel showArrows={false}>
                             <div>
                                 <img src="../../waikato1.jpg" />
                             </div>
