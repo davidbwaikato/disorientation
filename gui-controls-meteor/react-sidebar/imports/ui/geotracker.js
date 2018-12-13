@@ -29,7 +29,7 @@ class GeoTracker extends Component {
             transitions: true,
             touch: true,
             shadow: true,
-            dragToggleDistance: 30
+            dragToggleDistance: 40
         }
         
         this.onSetOpen = this.onSetOpen.bind(this);
@@ -97,7 +97,7 @@ class GeoTracker extends Component {
                             href="#"
                             style={styles.contentHeaderMenuLink}
                         >
-                            ☰
+                            <i className="fa fa-bars"></i>
                         </a>
                         <span></span>
                     </span>

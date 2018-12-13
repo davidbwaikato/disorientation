@@ -35,24 +35,29 @@ const SidebarContent = props => {
     return (
         <Panel title="Menu" style={style}>
             <div style={style.content}>
-                <a style={styles.sidebarLink} onClick={() => history.push("/index")}>
+                <a className="style" style={styles.sidebarLink} onClick={() => history.push("/index")}>
                     <i className="fa fa-home"></i>
                     <span> Home</span>
                 </a>
                 <div style={styles.divider} />
-                <a style={styles.sidebarLink} onClick={() => history.push("/geotracker")}>
+                <a className="style" style={styles.sidebarLink} onClick={() => history.push("/geotracker")}>
                     <i className="fa fa-compass"></i>
                     <span> Location</span>
                 </a>
                 <div style={styles.divider} />
-                <a style={styles.sidebarLink} onClick={() => history.push("/images")}>
+                <a className="style" style={styles.sidebarLink} onClick={() => history.push("/images")}>
                     <i className="fa fa-image"></i>
                     <span> Images</span>
                 </a>
                 <div style={styles.divider} />
-                <a style={styles.sidebarLink} onClick={() => history.push("/settings")}>
+                <a className="style" style={styles.sidebarLink} onClick={() => history.push("/settings")}>
                     <i className="fa fa-gear"></i>
                     <span> Settings</span>
+                </a>
+                <div style={styles.divider} />
+                <a href="/login" className="style" style={styles.sidebarLink}>
+                    <i className="fa fa-sign-out"></i>
+                    <span> Logout</span>
                 </a>
                 <div style={styles.divider} />
             </div>

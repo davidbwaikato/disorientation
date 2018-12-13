@@ -3,7 +3,7 @@ import Switch from "react-switch";
 import { Column, Row } from 'simple-flexbox';
 import { Link } from "react-router-dom";
 
-import "./settings.css";
+import "./settings.css"
 import Sidebar from "./sidebar";
 import Panel from "./panel";
 import SidebarContent from "./sidebar_content";
@@ -12,27 +12,30 @@ const styles = {
     contentHeaderMenuLink: {
         textDecoration: "none",
         color: "white",
-        padding: 8,
         textAlign: "right"
     },
     content: {
-        padding: "8px 12px"
-    },
-    switch: {
-        padding: "0",
-        textAlign: "right"
+        padding: "4px 0"
     },
     divider: {
-        margin: "0 12px",
+        margin: "0 16px",
         height: 1,
         backgroundColor: "#e0e0e0"
     },
     block: {
         display: "block",
-        padding: "24px 12px",
+        padding: "24px 16px",
+        paddingTop: "28px",
         color: "#000000",
         textDecoration: "none",
-        //fontWeight: "bold"
+        fontWeight: "normal"
+    },
+    block2: {
+        display: "block",
+        padding: "28px 16px",
+        color: "#000000",
+        textDecoration: "none",
+        fontWeight: "normal"
     },
     arrow: {
         paddingTop: "4px",
@@ -50,7 +53,7 @@ class Settings extends Component {
             transitions: true,
             touch: true,
             shadow: true,
-            dragToggleDistance: 50
+            dragToggleDistance: 40
         };
         
         this.handleChange = this.handleChange.bind(this);
@@ -91,7 +94,7 @@ class Settings extends Component {
                             href="#"
                             style={styles.contentHeaderMenuLink}
                         >
-                            ☰
+                            <i className="fa fa-bars"></i>
                         </a>
                         <span></span>
                     </span>
@@ -130,7 +133,6 @@ class Settings extends Component {
                                     <Switch
                                         onChange={this.handleChange}
                                         checked={this.props.checked1}
-                                        style={styles.switch}
                                         onColor="#2693e6"
                                         onHandleColor="#FFF"
                                         uncheckedIcon={false}
@@ -153,7 +155,6 @@ class Settings extends Component {
                                     <Switch
                                         onChange={this.handleDrag}
                                         checked={this.props.checked2}
-                                        style={styles.switch}
                                         onColor="#2693e6"
                                         onHandleColor="#FFF"
                                         uncheckedIcon={false}
@@ -167,7 +168,7 @@ class Settings extends Component {
                             </Row>
                         </label>
                         <div style={styles.divider} />
-                        <Link to="/Settings" style={styles.block}>
+                        <Link to="/settings/page" className="style" style={styles.block2}>
                             <Row>
                                 <Column flexGrow={10}>
                                     <span>Setting</span>

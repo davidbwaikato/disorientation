@@ -7,6 +7,8 @@ import Home from "../imports/ui/index.js";
 import GeoTracker from "../imports/ui/geotracker.js";
 import Images from "../imports/ui/carousel.js";
 import Settings from "../imports/ui/settings.js";
+import settingsPage from "../imports/ui/settingsPage.js";
+import Login from "../imports/ui/login.js";
 import history from "./history"
     
 class Path extends Component {
@@ -23,6 +25,7 @@ class Path extends Component {
         }
         this.handlePull = this.handlePull.bind(this);
         this.handleDrag = this.handleDrag.bind(this);
+        console.log(JSON.parse(localStorage.getItem("auth")));
     }
     
     handlePull(checked1) {
@@ -126,6 +129,8 @@ class Path extends Component {
                             growStart={grow1}
                             growEnd={grow2} />}
                     />
+                    <Route exact path='/settings/page' component={settingsPage} />
+                    <Route exact path='/login' component={Login} />
                 </Switch>
             </Router>
         )

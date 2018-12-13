@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import ReactDOM, { render } from "react-dom";
+import {Link} from 'react-router-dom'
 
 import Path from "../../client/path.js";
+import App from "../../client/app.js"
 import "./login.css"
 
 const styles = {
@@ -10,7 +12,12 @@ const styles = {
         padding: "54px 32px"
     },
     button: {
-        padding: "18px 52px"
+        padding: "18px 50px",
+        textAlign: "center"
+    },
+    Button: {
+        width: "140px",
+        height: "45px"
     }
 };
 
@@ -22,6 +29,8 @@ class Login extends Component {
             id: "",
             password: ""
         };
+        
+        localStorage.setItem("auth", JSON.stringify(false));
     }
     
     validateForm() {
@@ -35,9 +44,8 @@ class Login extends Component {
     }
     
     handleSubmit = event => {
-        event.preventDefault();
-        ReactDOM.render(<Path />, document.getElementById("app"));
-        localStorage.setItem("auth", "true");
+        localStorage.setItem("auth", JSON.stringify(true));
+        <Path />
     }
     
     render() {
@@ -69,10 +77,13 @@ class Login extends Component {
                     </FormGroup>
                     <div style={styles.button}>
                         <Button
+                            href="/"
                             block
                             bsSize="large"
+                            className="btn btn-danger"
                             disabled={!this.validateForm()}
                             type="submit"
+                            onClick={this.handleSubmit}
                         >
                         Login
                         </Button>
