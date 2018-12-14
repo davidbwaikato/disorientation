@@ -25,7 +25,6 @@ class Path extends Component {
         }
         this.handlePull = this.handlePull.bind(this);
         this.handleDrag = this.handleDrag.bind(this);
-        console.log(JSON.parse(localStorage.getItem("auth")));
     }
     
     handlePull(checked1) {

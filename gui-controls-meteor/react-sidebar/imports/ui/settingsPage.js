@@ -24,6 +24,9 @@ const styles = {
         color: "#000000",
         textDecoration: "none",
         fontWeight: "normal"
+    },
+    radio: {
+        marginRight: "8px"
     }
 };
 
@@ -66,6 +69,7 @@ class settingsPage extends Component {
                             value="panelW" 
                             checked={this.state.checked === "panelW"}
                             onChange={this.handleChange}
+                            style={styles.radio}
                         /> 
                         White
                     </label>
@@ -76,6 +80,7 @@ class settingsPage extends Component {
                             value="panelG" 
                             checked={this.state.checked === "panelG"}
                             onChange={this.handleChange}
+                            style={styles.radio}
                         /> 
                         Gray
                     </label>
@@ -86,6 +91,7 @@ class settingsPage extends Component {
                             value="panelY" 
                             checked={this.state.checked === "panelY"}
                             onChange={this.handleChange}
+                            style={styles.radio}
                         /> 
                         Yellow
                     </label>
@@ -96,6 +102,7 @@ class settingsPage extends Component {
                             value="panelB" 
                             checked={this.state.checked === "panelB"}
                             onChange={this.handleChange}
+                            style={styles.radio}
                         /> 
                         Blue
                     </label>
@@ -106,6 +113,7 @@ class settingsPage extends Component {
                             value="panelO" 
                             checked={this.state.checked === "panelO"}
                             onChange={this.handleChange}
+                            style={styles.radio}
                         /> 
                         Orange
                     </label>

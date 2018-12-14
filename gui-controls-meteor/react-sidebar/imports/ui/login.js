@@ -18,8 +18,31 @@ const styles = {
     Button: {
         width: "140px",
         height: "45px"
+    },
+    error: {
+        color: "red"
     }
 };
+
+function validate(id, password) {
+    const errors = [];
+    const re = /^[0-9\b]+$/;
+    
+    if (id.length != 7 ) {
+        errors.push("ID must be 7 digits long");
+    }
+    
+    if (!re.test(id)) {
+        errors.push("ID must be a number");
+    }
+
+    if (password.length < 6) {
+        errors.push("Password should be at least 6 characters long");
+    }
+
+    return errors;
+}
+
 
 class Login extends Component {
     constructor(props) {
@@ -27,7 +50,9 @@ class Login extends Component {
         
         this.state = {
             id: "",
-            password: ""
+            password: "",
+            
+            errors: []
         };
         
         localStorage.setItem("auth", JSON.stringify(false));
@@ -37,18 +62,29 @@ class Login extends Component {
         return this.state.id.length >= 7 && this.state.password.length > 0; 
     }
     
-    handleChange = event => {
+    handleChange = e => {
         this.setState({
-            [event.target.id]: event.target.value
+            [e.target.id]: e.target.value
         });
     }
     
-    handleSubmit = event => {
-        localStorage.setItem("auth", JSON.stringify(true));
-        <Path />
+    handleSubmit = e => {
+        const { id, password } = this.state;
+
+        const errors = validate(id, password);
+        
+        if (errors.length > 0) {
+            e.preventDefault();
+            this.setState({ errors });
+            return;
+        } else {
+            localStorage.setItem("auth", JSON.stringify(true));
+            <Path />
+        }
     }
     
     render() {
+        const { errors } = this.state;
         return (
             <div className="Login" style={styles.content}>
                 <div className="text-center" style={{ margin: "10px 0" }}>
@@ -56,6 +92,9 @@ class Login extends Component {
                 </div>
                 <hr />
                 <form onSubmit={this.handleSubmit}>
+                    {errors.map(error => (
+                        <p key={error} style={styles.error}>Error: {error}</p>
+                    ))}
                     <FormGroup controlId="id" bsSize="large">
                         <ControlLabel>ID number:</ControlLabel>
                         <FormControl
@@ -81,7 +120,6 @@ class Login extends Component {
                             block
                             bsSize="large"
                             className="btn btn-danger"
-                            disabled={!this.validateForm()}
                             type="submit"
                             onClick={this.handleSubmit}
                         >
