@@ -7,7 +7,7 @@ import Home from "../imports/ui/index.js";
 import GeoTracker from "../imports/ui/geotracker.js";
 import Images from "../imports/ui/carousel.js";
 import Settings from "../imports/ui/settings.js";
-import settingsPage from "../imports/ui/settingsPage.js";
+import SettingsPage from "../imports/ui/settingsPage.js";
 import Login from "../imports/ui/login.js";
 import history from "./history"
     
@@ -21,10 +21,17 @@ class Path extends Component {
             checked1: JSON.parse(localStorage.getItem("checked1")),
             checked2: JSON.parse(localStorage.getItem("checked2")),
             grow1: JSON.parse(localStorage.getItem("grow1")),
-            grow2: JSON.parse(localStorage.getItem("grow2"))
+            grow2: JSON.parse(localStorage.getItem("grow2")),
+            bg: JSON.parse(localStorage.getItem("bg"))
         }
         this.handlePull = this.handlePull.bind(this);
         this.handleDrag = this.handleDrag.bind(this);
+        this.handleBG = this.handleBG.bind(this);
+    }
+    
+    handleBG(e) {
+        this.setState ({ bg: e.target.value });
+        localStorage.setItem("bg", JSON.stringify(e.target.value));
     }
     
     handlePull(checked1) {
@@ -64,6 +71,7 @@ class Path extends Component {
         const checked2 = this.state.checked2;
         const grow1 = this.state.grow1;
         const grow2 = this.state.grow2;
+        const bg = this.state.bg;
         
         return (
             <Router history={history}>
@@ -73,48 +81,36 @@ class Path extends Component {
                         render={(props) => <Home {...props} 
                             pullRight={pullRight} 
                             touchHandleWidth={touchHandleWidth}
-                            checked1={checked1}
-                            checked2={checked2}
-                            onPullChange={this.handlePull}
-                            onDragChange={this.handleDrag}
                             growStart={grow1}
-                            growEnd={grow2} />}
+                            growEnd={grow2}
+                            checked={bg} />}
                     />
                     <Route 
                         exact path='/index' 
                         render={(props) => <Home {...props} 
                             pullRight={pullRight} 
                             touchHandleWidth={touchHandleWidth}
-                            checked1={checked1}
-                            checked2={checked2}
-                            onPullChange={this.handlePull}
-                            onDragChange={this.handleDrag}
                             growStart={grow1}
-                            growEnd={grow2} />}
+                            growEnd={grow2}
+                            checked={bg} />}
                     />
                     <Route 
                         exact path='/geotracker' 
                         render={(props) => <GeoTracker {...props} 
                             pullRight={pullRight} 
                             touchHandleWidth={touchHandleWidth}
-                            checked1={checked1}
-                            checked2={checked2}
-                            onPullChange={this.handlePull}
-                            onDragChange={this.handleDrag}
                             growStart={grow1}
-                            growEnd={grow2} />}
+                            growEnd={grow2}
+                            checked={bg} />}
                     />
                     <Route 
                         exact path='/images' 
                         render={(props) => <Images {...props} 
                             pullRight={pullRight} 
                             touchHandleWidth={touchHandleWidth}
-                            checked1={checked1}
-                            checked2={checked2}
-                            onPullChange={this.handlePull}
-                            onDragChange={this.handleDrag}
                             growStart={grow1}
-                            growEnd={grow2} />}
+                            growEnd={grow2}
+                            checked={bg} />}
                     />
                     <Route 
                         exact path='/settings' 
@@ -126,9 +122,15 @@ class Path extends Component {
                             onPullChange={this.handlePull}
                             onDragChange={this.handleDrag}
                             growStart={grow1}
-                            growEnd={grow2} />}
+                            growEnd={grow2}
+                            checked={bg} />}
                     />
-                    <Route exact path='/settings/page' component={settingsPage} />
+                    <Route 
+                        exact path='/settings/page' 
+                        render={(props) => <SettingsPage {...props}
+                            onBGChange={this.handleBG}
+                            checked={bg} />}
+                        />
                     <Route exact path='/login' component={Login} />
                 </Switch>
             </Router>

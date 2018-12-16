@@ -31,7 +31,7 @@ class Images extends Component {
             transitions: true,
             touch: true,
             shadow: true,
-            dragToggleDistance: 40
+            dragToggleDistance: 30
         };
         
         this.onSetOpen = this.onSetOpen.bind(this);

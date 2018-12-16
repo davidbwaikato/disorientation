@@ -58,10 +58,6 @@ class Login extends Component {
         localStorage.setItem("auth", JSON.stringify(false));
     }
     
-    validateForm() {
-        return this.state.id.length >= 7 && this.state.password.length > 0; 
-    }
-    
     handleChange = e => {
         this.setState({
             [e.target.id]: e.target.value

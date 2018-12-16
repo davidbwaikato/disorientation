@@ -18,6 +18,14 @@ const styles = {
         height: 1,
         backgroundColor: "#e0e0e0"
     },
+    blockTop: {
+        display: "block",
+        padding: "24px 16px",
+        paddingTop: "28px",
+        color: "#000000",
+        textDecoration: "none",
+        fontWeight: "normal"
+    },
     block: {
         display: "block",
         padding: "24px 16px",
@@ -26,11 +34,11 @@ const styles = {
         fontWeight: "normal"
     },
     radio: {
-        marginRight: "8px"
+        marginRight: "6px"
     }
 };
 
-class settingsPage extends Component {
+class SettingsPage extends Component {
     constructor(props) {
         super(props)
         
@@ -42,11 +50,11 @@ class settingsPage extends Component {
     }
     
     handleChange(e) {
-        this.setState ({ checked: e.target.value });
+        this.props.onBGChange(e);
     }
     
     render() {
-        const className = this.state.checked;
+        const className = this.props.checked;
         
         const contentHeader = (
             <span>
@@ -62,66 +70,68 @@ class settingsPage extends Component {
 
         return (
             <Panel title={contentHeader}>
-                <div style={styles.content} className={className}>
-                    <label style={styles.block}>
-                        <input 
-                            type="radio" 
-                            value="panelW" 
-                            checked={this.state.checked === "panelW"}
-                            onChange={this.handleChange}
-                            style={styles.radio}
-                        /> 
-                        White
-                    </label>
-                    <div style={styles.divider}/>
-                    <label style={styles.block}>
-                        <input 
-                            type="radio" 
-                            value="panelG" 
-                            checked={this.state.checked === "panelG"}
-                            onChange={this.handleChange}
-                            style={styles.radio}
-                        /> 
-                        Gray
-                    </label>
-                    <div style={styles.divider}/>
-                    <label style={styles.block}>
-                        <input 
-                            type="radio" 
-                            value="panelY" 
-                            checked={this.state.checked === "panelY"}
-                            onChange={this.handleChange}
-                            style={styles.radio}
-                        /> 
-                        Yellow
-                    </label>
-                    <div style={styles.divider}/>
-                    <label style={styles.block}>
-                        <input 
-                            type="radio" 
-                            value="panelB" 
-                            checked={this.state.checked === "panelB"}
-                            onChange={this.handleChange}
-                            style={styles.radio}
-                        /> 
-                        Blue
-                    </label>
-                    <div style={styles.divider}/>
-                    <label style={styles.block}>
-                        <input 
-                            type="radio" 
-                            value="panelO" 
-                            checked={this.state.checked === "panelO"}
-                            onChange={this.handleChange}
-                            style={styles.radio}
-                        /> 
-                        Orange
-                    </label>
-                    <div style={styles.divider}/>
-                </div>
+                <body style={{ height: window.innerHeight }} className={className}>
+                    <div style={styles.content}>
+                        <label style={styles.blockTop}>
+                            <input 
+                                type="radio" 
+                                value="panelW" 
+                                checked={this.props.checked === "panelW"}
+                                onChange={this.handleChange}
+                                style={styles.radio}
+                            /> 
+                            White
+                        </label>
+                        <div style={styles.divider}/>
+                        <label style={styles.block}>
+                            <input 
+                                type="radio" 
+                                value="panelG" 
+                                checked={this.props.checked === "panelG"}
+                                onChange={this.handleChange}
+                                style={styles.radio}
+                            /> 
+                            Gray
+                        </label>
+                        <div style={styles.divider}/>
+                        <label style={styles.block}>
+                            <input 
+                                type="radio" 
+                                value="panelY" 
+                                checked={this.props.checked === "panelY"}
+                                onChange={this.handleChange}
+                                style={styles.radio}
+                            /> 
+                            Yellow
+                        </label>
+                        <div style={styles.divider}/>
+                        <label style={styles.block}>
+                            <input 
+                                type="radio" 
+                                value="panelB" 
+                                checked={this.props.checked === "panelB"}
+                                onChange={this.handleChange}
+                                style={styles.radio}
+                            /> 
+                            Blue
+                        </label>
+                        <div style={styles.divider}/>
+                        <label style={styles.block}>
+                            <input 
+                                type="radio" 
+                                value="panelO" 
+                                checked={this.props.checked === "panelO"}
+                                onChange={this.handleChange}
+                                style={styles.radio}
+                            /> 
+                            Orange
+                        </label>
+                        <div style={styles.divider}/>
+                    </div>
+                </body>
             </Panel>
         )
     }
 }
 
-export default settingsPage
+export default SettingsPage

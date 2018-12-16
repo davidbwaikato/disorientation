@@ -10,6 +10,7 @@ class App extends Component {
             localStorage.setItem("touchHandleWidth", "20");
             localStorage.setItem("checked1", JSON.stringify(false));
             localStorage.setItem("checked2", JSON.stringify(false));
+            localStorage.setItem("bg", JSON.stringify("panelW"));
         }
         if(JSON.parse(localStorage.getItem("auth")) == false || JSON.parse(localStorage.getItem("auth")) == null) {
             return (

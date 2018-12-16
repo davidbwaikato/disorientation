@@ -28,7 +28,7 @@ class Home extends Component {
             transitions: true,
             touch: true,
             shadow: true,
-            dragToggleDistance: 40
+            dragToggleDistance: 30
         };
         
         this.onSetOpen = this.onSetOpen.bind(this);
@@ -46,6 +46,7 @@ class Home extends Component {
     
     render() {
         const sidebar = <SidebarContent />;
+        const className = this.props.checked;
 
         const contentHeader = (
             <Row>
@@ -88,9 +89,11 @@ class Home extends Component {
         return (
             <Sidebar {...sidebarProps}>
                 <Panel title={contentHeader}>
-                    <div style={styles.content}>
-                        <h3>Hello world!</h3>
-                    </div>
+                    <body style={{ height: window.innerHeight }} className={className}>
+                        <div style={styles.content}>
+                            <h3>Hello world!</h3>
+                        </div>
+                    </body>
                 </Panel>
             </Sidebar>
         );

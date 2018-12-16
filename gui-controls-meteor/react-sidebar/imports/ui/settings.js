@@ -33,6 +33,7 @@ const styles = {
     block2: {
         display: "block",
         padding: "28px 16px",
+        paddingBottom: "28px",
         color: "#000000",
         textDecoration: "none",
         fontWeight: "normal"
@@ -53,7 +54,7 @@ class Settings extends Component {
             transitions: true,
             touch: true,
             shadow: true,
-            dragToggleDistance: 40
+            dragToggleDistance: 30
         };
         
         this.handleChange = this.handleChange.bind(this);

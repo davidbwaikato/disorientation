@@ -29,7 +29,7 @@ class GeoTracker extends Component {
             transitions: true,
             touch: true,
             shadow: true,
-            dragToggleDistance: 40
+            dragToggleDistance: 30
         }
         
         this.onSetOpen = this.onSetOpen.bind(this);
@@ -43,6 +43,13 @@ class GeoTracker extends Component {
     menuButtonClick(ev) {
         ev.preventDefault();
         this.onSetOpen(!this.state.open);
+    }
+    
+    componentWillUnmount() {
+        if(this.track) {
+            this.track.stop();
+            console.log("Tracker stopped");
+        }
     }
     
     getLocation() {
@@ -61,18 +68,16 @@ class GeoTracker extends Component {
                 lngName = inputs2[i];
             }
         }
-        Tracker.autorun(() => {
+        this.track = Tracker.autorun(() => {
             latLng.set(Geolocation.latLng());
             if(latLng.get()) {
                 console.log(latLng.curValue);
                 //Write latitude to console and alter textbox value
                 this.state.lat = latLng.curValue.lat;
                 latName.value = latLng.curValue.lat;
-                console.log(this.state.lat);
                 //Write longitude to console and alter textbox value
                 this.state.lng = latLng.curValue.lng;
                 lngName.value = latLng.curValue.lng;
-                console.log(this.state.lng);
             }
         });
         
@@ -84,6 +89,7 @@ class GeoTracker extends Component {
     
     render() {
         const sidebar = <SidebarContent />;
+        const className = this.props.checked;
 
         const contentHeader = (
             <Row>
@@ -126,6 +132,7 @@ class GeoTracker extends Component {
         return (
             <Sidebar {...sidebarProps}>
                 <Panel title={contentHeader}>
+            <body style={{ height: window.innerHeight }} className={className}>
                     <div style={styles.content}>
                         <div>
                             <div className="text-center" style={{ margin: "10px 0" }}>
@@ -162,6 +169,7 @@ class GeoTracker extends Component {
                             </div>
                         </div>
                     </div>
+        </body>
                 </Panel>
             </Sidebar>
         );
