@@ -8,19 +8,19 @@ const styles = {
         width: 256,
         height: "100%"
     },
-        sidebarLink: {
+    sidebarLink: {
         display: "block",
         padding: "16px 16px",
         color: "#FFFFFF",
-        textDecoration: "none",
+        textDecoration: "none"
         //fontWeight: "bold"
     },
-        divider: {
+    divider: {
         margin: "0 16px",
         height: 1,
         backgroundColor: "white"
     },
-        content: {
+    content: {
         padding: "16px",
         height: "100%",
         backgroundColor: "#FFFFFF"
@@ -29,9 +29,9 @@ const styles = {
 
 const SidebarContent = props => {
     const style = props.style
-    ? { ...style.sidebar, ...props.style }
-    : styles.sidebar;
-    
+        ? { ...style.sidebar, ...props.style }
+        : styles.sidebar;
+
     return (
         <Panel title="Menu" style={style}>
             <div style={style.content}>
@@ -60,20 +60,23 @@ const SidebarContent = props => {
                     <span> Logout</span>
                 </a>
                 <div style={styles.divider} />
+                <a className="style" style={styles.sidebarLink} onClick={() => history.push("/demo_graphics")}>
+                    <i className="fa fa-cubes"/>
+                    <span> Demo: Graphics I</span>
+                </a>
+                <div style={styles.divider} />
+                <a className="style" style={styles.sidebarLink} onClick={() => history.push("/demo_maps")}>
+                    <i className="fa fa-map-marker"/>
+                    <span> Demo: Maps</span>
+                </a>
+                <div style={styles.divider} />
             </div>
         </Panel>
     );
 };
 
 SidebarContent.propTypes = {
-  style: PropTypes.object
+    style: PropTypes.object
 };
 
 export default SidebarContent;
-
-
-
-
-
-
-
