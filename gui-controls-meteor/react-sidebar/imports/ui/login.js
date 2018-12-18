@@ -26,13 +26,13 @@ const styles = {
 
 function validate(id, password) {
     const errors = [];
-    const re = /^[0-9\b]+$/;
+    const num = /^[0-9\b]+$/;
     
     if (id.length != 7 ) {
         errors.push("ID must be 7 digits long");
     }
     
-    if (!re.test(id)) {
+    if (!num.test(id)) {
         errors.push("ID must be a number");
     }
 

@@ -18,6 +18,12 @@ const styles = {
     },
     content: {
         padding: "16px"
+    },
+    panel: {
+        position: "-webkit-sticky",
+        position: "sticky",
+        top: 0,
+        zIndex: 2
     }
 };
 
@@ -49,6 +55,7 @@ class Images extends Component {
     
     render() {
         const sidebar = <SidebarContent />;
+        const className = this.props.checked;
 
         const contentHeader = (
             <Row>
@@ -90,9 +97,10 @@ class Images extends Component {
         
         return (
             <Sidebar {...sidebarProps}>
-                <Panel title={contentHeader}>
+                <Panel title={contentHeader} style={styles.panel}></Panel>
+                <body style={{ height: window.innerHeight }} className={className}>
                     <div style={styles.content}>
-                        <Carousel showArrows={false}>
+                        <Carousel showArrows={false} style={{ zIndex: 1 }}>
                             <div>
                                 <img src="../../waikato1.jpg" />
                             </div>
@@ -113,7 +121,7 @@ class Images extends Component {
                             </div>
                         </Carousel>
                     </div>
-                </Panel>
+                </body>
             </Sidebar>
         )
     }

@@ -15,6 +15,12 @@ const styles = {
     content: {
         padding: "16px",
         textAlign: "center"
+    },
+    panel: {
+        position: "-webkit-sticky",
+        position: "sticky",
+        top: 0,
+        zIndex: 1
     }
 };
 
@@ -88,13 +94,12 @@ class Home extends Component {
 
         return (
             <Sidebar {...sidebarProps}>
-                <Panel title={contentHeader}>
-                    <body style={{ height: window.innerHeight }} className={className}>
-                        <div style={styles.content}>
-                            <h3>Hello world!</h3>
-                        </div>
-                    </body>
-                </Panel>
+                <Panel title={contentHeader} style={styles.panel}></Panel>
+                <body style={{ height: window.innerHeight }} className={className}>
+                    <div style={styles.content}>
+                        <h3>Hello world!</h3>
+                    </div>
+                </body>
             </Sidebar>
         );
     }

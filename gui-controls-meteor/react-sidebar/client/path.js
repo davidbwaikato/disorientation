@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Switch, Route, Router, withRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Switch, Route, Router } from "react-router-dom";
 
 import Home from "../imports/ui/index.js";
 import GeoTracker from "../imports/ui/geotracker.js";

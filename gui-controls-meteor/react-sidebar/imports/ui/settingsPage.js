@@ -35,6 +35,12 @@ const styles = {
     },
     radio: {
         marginRight: "6px"
+    },
+    panel: {
+        position: "-webkit-sticky",
+        position: "sticky",
+        top: 0,
+        zIndex: 1
     }
 };
 
@@ -69,7 +75,8 @@ class SettingsPage extends Component {
         );
 
         return (
-            <Panel title={contentHeader}>
+            <div>
+                <Panel title={contentHeader} style={styles.panel}></Panel>
                 <body style={{ height: window.innerHeight }} className={className}>
                     <div style={styles.content}>
                         <label style={styles.blockTop}>
@@ -82,7 +89,7 @@ class SettingsPage extends Component {
                             /> 
                             White
                         </label>
-                        <div style={styles.divider}/>
+                        <hr className="hrW" />
                         <label style={styles.block}>
                             <input 
                                 type="radio" 
@@ -93,7 +100,7 @@ class SettingsPage extends Component {
                             /> 
                             Gray
                         </label>
-                        <div style={styles.divider}/>
+                        <hr className="hrW" />
                         <label style={styles.block}>
                             <input 
                                 type="radio" 
@@ -104,7 +111,7 @@ class SettingsPage extends Component {
                             /> 
                             Yellow
                         </label>
-                        <div style={styles.divider}/>
+                        <hr className="hrW" />
                         <label style={styles.block}>
                             <input 
                                 type="radio" 
@@ -115,7 +122,7 @@ class SettingsPage extends Component {
                             /> 
                             Blue
                         </label>
-                        <div style={styles.divider}/>
+                        <hr className="hrW" />
                         <label style={styles.block}>
                             <input 
                                 type="radio" 
@@ -126,10 +133,10 @@ class SettingsPage extends Component {
                             /> 
                             Orange
                         </label>
-                        <div style={styles.divider}/>
+                        <hr className="hrW" />
                     </div>
                 </body>
-            </Panel>
+            </div>
         )
     }
 }

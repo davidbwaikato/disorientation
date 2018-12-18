@@ -14,6 +14,11 @@ const styles = {
     },
     content: {
         padding: "16px"
+    },
+    panel: {
+        position: "-webkit-sticky",
+        position: "sticky",
+        top: 0
     }
 };
 
@@ -131,8 +136,8 @@ class GeoTracker extends Component {
         
         return (
             <Sidebar {...sidebarProps}>
-                <Panel title={contentHeader}>
-            <body style={{ height: window.innerHeight }} className={className}>
+                <Panel title={contentHeader} style={styles.panel}></Panel>
+                <body style={{ height: window.innerHeight }} className={className}>
                     <div style={styles.content}>
                         <div>
                             <div className="text-center" style={{ margin: "10px 0" }}>
@@ -169,8 +174,7 @@ class GeoTracker extends Component {
                             </div>
                         </div>
                     </div>
-        </body>
-                </Panel>
+                </body>
             </Sidebar>
         );
     }

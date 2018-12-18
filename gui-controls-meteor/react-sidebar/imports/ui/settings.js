@@ -41,6 +41,12 @@ const styles = {
     arrow: {
         paddingTop: "4px",
         color: "#9b9b9b"
+    },
+    panel: {
+        position: "-webkit-sticky",
+        position: "sticky",
+        top: 0,
+        zIndex: 1
     }
 };
 
@@ -82,6 +88,7 @@ class Settings extends Component {
     
     render() {
         const sidebar = <SidebarContent />;
+        const className = this.props.checked;
 
         const contentHeader = (
             <Row>
@@ -123,7 +130,8 @@ class Settings extends Component {
         
         return(
             <Sidebar {...sidebarProps}>
-                <Panel title={contentHeader}>
+                <Panel title={contentHeader} style={styles.panel}></Panel>
+                <body style={{ height: window.innerHeight }} className={className}>
                     <div style={styles.content}>
                         <label style={styles.block}>
                             <Row justifyContent="space-between">
@@ -181,7 +189,7 @@ class Settings extends Component {
                         </Link>
                         <div style={styles.divider} />
                     </div>
-                </Panel>
+                </body>
             </Sidebar>
         );
     }

@@ -12,7 +12,7 @@
 
 .panelY {
     background-color: #fffcef;
-    color: black;
+    color: white;
 }
 
 .panelB {
@@ -21,4 +21,14 @@
 
 .panelO {
     background-color: #fff3d8;
+}
+
+.hrW {
+    border-color: #e0e0e0;
+    margin: 0 16px;
+}
+
+.hrG {
+    border-color: black;
+    margin: 0 16px;
 }
