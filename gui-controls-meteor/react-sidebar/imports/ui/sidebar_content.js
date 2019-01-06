@@ -55,7 +55,7 @@ const SidebarContent = props => {
                     <span> Settings</span>
                 </a>
                 <div style={styles.divider} />
-                <a className="style" style={styles.sidebarLink} onClick={() => history.push("/demo_graphics")}>
+                {/*<a className="style" style={styles.sidebarLink} onClick={() => history.push("/demo_graphics")}>
                     <i className="fa fa-cubes"/>
                     <span> Demo: Graphics I</span>
                 </a>
@@ -64,8 +64,8 @@ const SidebarContent = props => {
                     <i className="fa fa-map-marker"/>
                     <span> Demo: Maps</span>
                 </a>
-                <div style={styles.divider} />
-                    <a href="/login" className="style" style={styles.sidebarLink}>
+                <div style={styles.divider} />*/}
+                <a href="/login" className="style" style={styles.sidebarLink}>
                     <i className="fa fa-sign-out"></i>
                     <span> Logout</span>
                 </a>

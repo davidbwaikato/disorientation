@@ -7,15 +7,9 @@ import Sidebar from "./sidebar";
 import Panel from "./panel";
 import SidebarContent from "./sidebar_content";
 import "./carousel.min.css";
+import Header from "./header.js";
 
 const styles = {
-    contentHeaderMenuLink: {
-        backgroundColor: "transparent",
-        background: "transparent",
-        textDecoration: "none",
-        color: "white",
-        padding: 8
-    },
     content: {
         padding: "16px"
     },
@@ -58,26 +52,11 @@ class Images extends Component {
         const className = this.props.checked;
 
         const contentHeader = (
-            <Row>
-                <Column flexGrow={this.props.growStart}>
-                    <div></div>
-                </Column>
-                <Column flexGrow={1}>
-                    <span>
-                        <a
-                            onClick={this.menuButtonClick}
-                            href="#"
-                            style={styles.contentHeaderMenuLink}
-                        >
-                            <i className="fa fa-bars"></i>
-                        </a>
-                        <span></span>
-                    </span>
-                </Column>
-                <Column flexGrow={this.props.growEnd}>
-                    <div></div>
-                </Column>
-            </Row>
+            <Header 
+                buttonClick={this.menuButtonClick} 
+                growStart={this.props.growStart} 
+                growEnd={this.props.growEnd} 
+            />
         );
         
         const sidebarProps = {
@@ -97,8 +76,8 @@ class Images extends Component {
         
         return (
             <Sidebar {...sidebarProps}>
-                <Panel title={contentHeader} style={styles.panel}></Panel>
-                <body style={{ height: window.innerHeight }} className={className}>
+                <div style={{ height: window.innerHeight }} className={className}>
+                    <Panel title={contentHeader} style={styles.panel}></Panel>
                     <div style={styles.content}>
                         <Carousel showArrows={false} style={{ zIndex: 1 }}>
                             <div>
@@ -121,7 +100,7 @@ class Images extends Component {
                             </div>
                         </Carousel>
                     </div>
-                </body>
+                </div>
             </Sidebar>
         )
     }

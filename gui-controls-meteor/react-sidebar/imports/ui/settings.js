@@ -7,13 +7,9 @@ import "./settings.css"
 import Sidebar from "./sidebar";
 import Panel from "./panel";
 import SidebarContent from "./sidebar_content";
+import Header from "./header.js";
 
 const styles = {
-    contentHeaderMenuLink: {
-        textDecoration: "none",
-        color: "white",
-        textAlign: "right"
-    },
     content: {
         padding: "4px 0"
     },
@@ -91,26 +87,11 @@ class Settings extends Component {
         const className = this.props.checked;
 
         const contentHeader = (
-            <Row>
-                <Column flexGrow={this.props.growStart}>
-                    <div></div>
-                </Column>
-                <Column flexGrow={1}>
-                    <span>
-                        <a
-                            onClick={this.menuButtonClick}
-                            href="#"
-                            style={styles.contentHeaderMenuLink}
-                        >
-                            <i className="fa fa-bars"></i>
-                        </a>
-                        <span></span>
-                    </span>
-                </Column>
-                <Column flexGrow={this.props.growEnd}>
-                    <div></div>
-                </Column>
-            </Row>
+            <Header 
+                buttonClick={this.menuButtonClick} 
+                growStart={this.props.growStart} 
+                growEnd={this.props.growEnd} 
+            />
         );
         
         const sidebarProps = {
@@ -130,8 +111,8 @@ class Settings extends Component {
         
         return(
             <Sidebar {...sidebarProps}>
-                <Panel title={contentHeader} style={styles.panel}></Panel>
-                <body style={{ height: window.innerHeight }} className={className}>
+                <div style={{ height: window.innerHeight }} className={className}>
+                    <Panel title={contentHeader} style={styles.panel}></Panel>
                     <div style={styles.content}>
                         <label style={styles.block}>
                             <Row justifyContent="space-between">
@@ -189,7 +170,7 @@ class Settings extends Component {
                         </Link>
                         <div style={styles.divider} />
                     </div>
-                </body>
+                </div>
             </Sidebar>
         );
     }

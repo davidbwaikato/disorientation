@@ -13,11 +13,6 @@ const styles = {
     content: {
         padding: "4px 0"
     },
-    divider: {
-        margin: "0 16px",
-        height: 1,
-        backgroundColor: "#e0e0e0"
-    },
     blockTop: {
         display: "block",
         padding: "24px 16px",
@@ -76,8 +71,8 @@ class SettingsPage extends Component {
 
         return (
             <div>
-                <Panel title={contentHeader} style={styles.panel}></Panel>
-                <body style={{ height: window.innerHeight }} className={className}>
+                <div style={{ height: window.innerHeight }} className={className}>
+                    <Panel title={contentHeader} style={styles.panel}></Panel>
                     <div style={styles.content}>
                         <label style={styles.blockTop}>
                             <input 
@@ -135,7 +130,7 @@ class SettingsPage extends Component {
                         </label>
                         <hr className="hrW" />
                     </div>
-                </body>
+                </div>
             </div>
         )
     }
