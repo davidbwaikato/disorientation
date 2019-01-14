@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { Geolocation } from 'meteor/mdg:geolocation';
+import Paper from 'material-ui/Paper';
+import Divider from 'material-ui/Divider';
 
 import Navbar from "./appbar.js";
 import Draw from "./drawer.js";
 
 const styles = {
     content: {
-        paddingTop: "64px",
+        paddingTop: "72px",
     },
-    panel: {
-        position: "-webkit-sticky",
-        position: "sticky",
-        top: 0
+    root: { 
+        position: "absolute", 
+        top: "0", 
+        bottom: "0",
+        left: "0",
+        right: "0",
     }
 };
 
@@ -81,15 +85,15 @@ class GeoTracker extends Component {
     
     render() {
         return (
-            <div>
+            <Paper style={styles.root}>
                 <Navbar onClick={this.onClick} toggle={this.state.openSecondary} />
                 <div style={styles.content}>
                     <div className="text-center" style={{ margin: "10px 0" }}>
                         <h4>GPS</h4>
                     </div>
-                    <hr />
+                    <Divider style={{ marginBottom: 16, marginTop: 10 }}/>
 
-                    <div id="gps" className="jumbotron" style={{ margin: "0 10px" }}>
+                    <div id="gps" style={{ margin: "0 18px" }}>
                         <form id="latC" className="form-group">
                             <label style={{ margin: "0 10px" }}>Latitude:</label>
                             <input 
@@ -117,8 +121,13 @@ class GeoTracker extends Component {
                         <button className="btn btn-primary" style={{ margin: "5px 0" }} onClick={this.getLocation.bind(this)}>Get                                           location</button>
                     </div>
                 </div>
-                <Draw handleClose={this.handleClose} open={this.state.open} openSecondary={this.state.openSecondary} />
-            </div>
+                <Draw 
+                    handleClose={this.handleClose} 
+                    open={this.state.open} 
+                    openSecondary={this.state.openSecondary} 
+                    theme={this.props.theme}
+                />
+            </Paper>
         );
     }
 }

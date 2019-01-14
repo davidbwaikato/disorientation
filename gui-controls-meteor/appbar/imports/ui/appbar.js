@@ -12,13 +12,25 @@ const styles = {
         top: "0",
         left: "0",
         content: "\e625"
-        //fontWeight: "bold"
     }
 };
 
 const Navbar = (props) => {
-        console.log(props.toggle);
-        if(props.toggle == false) {
+        if(props.setting == true) {
+            return (
+                <AppBar
+                    style={styles.header}
+                    title=""
+                    showMenuIconButton={false}
+                    iconElementLeft={
+                    <IconButton>
+                        <FontIcon className="material-icons">close</FontIcon>
+                    </IconButton>
+                    }
+                    onLeftIconButtonClick={props.onClick} 
+                />
+            )
+        } else if(props.toggle == false) {
             return (
                 <AppBar
                     style={styles.header}

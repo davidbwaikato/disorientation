@@ -1,13 +1,23 @@
 import React, { Component } from "react";
 import MenuItem from 'material-ui/MenuItem';
+import Paper from 'material-ui/Paper';
 
 import Navbar from "./appbar.js";
 import Draw from "./drawer.js";
 
 const styles = {
     content: {
-        paddingTop: "64px",
-        textAlign: "center"
+        paddingTop: "78px",
+        paddingLeft: "16px",
+        paddingRight: "16px",
+        textAlign: "center",
+        fontWeight: "lighter"
+    },
+    root: { 
+        position: "absolute", 
+        top: "0", 
+        left: "0",
+        right: "0",
     }
 };
 
@@ -34,7 +44,7 @@ class Home extends Component {
     
     render() {
         return (
-            <div>
+            <Paper style={styles.root}>
                 <Navbar onClick={this.onClick} toggle={this.state.openSecondary} />
                 <div style={styles.content}>
                     <h3>Hello world!</h3>
@@ -51,9 +61,9 @@ class Home extends Component {
                     handleClose={this.handleClose} 
                     open={this.state.open} 
                     openSecondary={this.state.openSecondary} 
-                    onRequestChange={this.onRequestChange}
+                    theme={this.props.theme}
                 />
-            </div>
+            </Paper>
         );
     }
 }
