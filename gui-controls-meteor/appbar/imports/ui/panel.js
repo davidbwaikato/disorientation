@@ -23,7 +23,7 @@ const Panel = props => {
 
     return (
         <div style={rootStyle}>
-            <div style={styles.header}>{props.title}</div>
+            <div style={props.header}>{props.title}</div>
             {props.children}
         </div>
     );

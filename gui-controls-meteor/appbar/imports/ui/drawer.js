@@ -8,7 +8,8 @@ import Home from 'material-ui/svg-icons/action/home';
 import Directions from 'material-ui/svg-icons/maps/directions';
 import Settings from 'material-ui/svg-icons/action/settings';
 import Collections from 'material-ui/svg-icons/image/collections';
-import history from "../../client/history"
+import history from "../../client/history";
+import { grey700, grey100 } from 'material-ui/styles/colors';
 
 import Panel from "./panel.js";
 
@@ -16,12 +17,36 @@ const styles = {
     content: {
         fontSize: "1.5em",
     },
-    header: {
-        padding: "32px, 0"
+    headerRed: {
+        backgroundColor: "#ED3628",
+        color: "black",
+        padding: "14px",
+        fontSize: "1.0em",
+    },
+    headerOrange: {
+        backgroundColor: "#F1AD1D",
+        color: "black",
+        padding: "14px",
+        fontSize: "1.0em",
+    },
+    headerDark: {
+        backgroundColor: grey700,
+        color: grey100,
+        padding: "14px",
+        fontSize: "1.0em",
     }
 };
 
 const Draw = (props) => {
+    let colour;
+    if(props.theme == "redMuiTheme") {
+        colour = styles.headerRed;
+    } else if(props.theme == "orangeMuiTheme") {
+        colour = styles.headerOrange;
+    } else if(props.theme == "darkMuiTheme") {
+        colour = styles.headerDark;
+    }
+    
     return(
         <Drawer
             docked={false}
@@ -32,7 +57,7 @@ const Draw = (props) => {
             disableSwipeToOpen={true}
             style={styles.content}
         >
-            <Panel title="Menu"></Panel>
+            <Panel title="Menu" header={colour}></Panel>
             <MenuItem primaryText="Home" leftIcon={<Home />} onClick={() => history.push("/index")} />
             <MenuItem primaryText="Geolocation" leftIcon={<Directions />} onClick={() => history.push("/geotracker")} />
             <MenuItem primaryText="Images" leftIcon={<Collections />} onClick={() => history.push("/images")} />
