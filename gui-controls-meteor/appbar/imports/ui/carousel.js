@@ -27,20 +27,16 @@ class Images extends Component {
         super(props);
         
         this.state = {
-            open: false,
+            left: false,
+            right: false,
             openSecondary: this.props.openSecondary
         };
         
         this.onClick = this.onClick.bind(this);
-        this.handleClose = this.handleClose.bind(this);
     }
     
-    onClick(e) {
-        this.setState({ open: !this.state.open });
-    }
-    
-    handleClose(e) {
-        this.setState({ open: false });
+    onClick = (side, open) => () => {
+        this.setState({ [side]: open });
     }
     
     render() {
@@ -70,9 +66,9 @@ class Images extends Component {
                     </Carousel>
                 </div>
                 <Draw 
-                    handleClose={this.handleClose} 
-                    open={this.state.open} 
-                    openSecondary={this.state.openSecondary} 
+                    toggleDrawer={this.onClick} 
+                    left={this.state.left}
+                    right={this.state.right}
                     theme={this.props.theme}
                 />
             </Paper>

@@ -16,43 +16,43 @@ const styles = {
 };
 
 const Navbar = (props) => {
-        if(props.setting == true) {
-            return (
-                <AppBar
-                    style={styles.header}
-                    title=""
-                    showMenuIconButton={false}
-                    iconElementLeft={
-                    <IconButton>
-                        <FontIcon className="material-icons">close</FontIcon>
-                    </IconButton>
-                    }
-                    onLeftIconButtonClick={props.onClick} 
-                />
-            )
-        } else if(props.toggle == false) {
-            return (
-                <AppBar
-                    style={styles.header}
-                    title="Title"
-                    onLeftIconButtonClick={props.onClick} 
-                />
-            )
-        } else if(props.toggle == true) {
-            return (
-                <AppBar
-                    style={styles.header}
-                    title="Title"
-                    iconElementRight={
-                    <IconButton>
-                        <FontIcon className="material-icons">menu</FontIcon>
-                    </IconButton>
-                    }
-                    showMenuIconButton={false}
-                    onRightIconButtonClick={props.onClick} 
-                />
-            )
-        }
+    
+    if(props.setting == true) {
+        return (
+            <AppBar
+                style={styles.header}
+                title=""
+                iconElementLeft={
+                <IconButton>
+                    <FontIcon className="material-icons">arrow_back</FontIcon>
+                </IconButton>
+                }
+                onLeftIconButtonClick={props.onClick} 
+            />
+        )
+    } else if(props.toggle == false) {
+        return (
+            <AppBar
+                style={styles.header}
+                title="Title"
+                onLeftIconButtonClick={props.onClick('left', true)} 
+            />
+        )
+    } else if(props.toggle == true) {
+        return (
+            <AppBar
+                style={styles.header}
+                title="Title"
+                iconElementRight={
+                <IconButton>
+                    <FontIcon className="material-icons">menu</FontIcon>
+                </IconButton>
+                }
+                showMenuIconButton={false}
+                onRightIconButtonClick={props.onClick('right', true)} 
+            />
+        )
+    }
         
 };
 

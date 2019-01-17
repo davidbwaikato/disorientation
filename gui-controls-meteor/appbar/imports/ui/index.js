@@ -26,26 +26,22 @@ class Home extends Component {
         super(props);
         
         this.state = { 
-            open: false,
+            left: false,
+            right: false,
             openSecondary: this.props.openSecondary
         };
         
-        this.onClick = this.onClick.bind(this);
-        this.handleClose = this.handleClose.bind(this);
+        this.onToggle = this.onToggle.bind(this);
     }
     
-    onClick(e) {
-        this.setState({ open: !this.state.open });
-    }
-    
-    handleClose(e) {
-        this.setState({ open: false });
+    onToggle = (side, open) => () => {
+        this.setState({ [side]: open });
     }
     
     render() {
         return (
             <Paper style={styles.root}>
-                <Navbar onClick={this.onClick} toggle={this.state.openSecondary} />
+                <Navbar onClick={this.onToggle} toggle={this.state.openSecondary} />
                 <div style={styles.content}>
                     <h3>Hello world!</h3>
                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum ligula ut leo molestie consequat. Donec eget malesuada ligula. Nam vitae scelerisque est. Etiam placerat hendrerit quam, vel ornare arcu cursus in. Integer ultrices consequat purus, non finibus erat rhoncus ac. Duis ante diam, placerat eu orci id, elementum convallis lorem. Vestibulum pretium varius leo, quis vulputate justo. Fusce augue quam, tempor vel luctus consequat, finibus id odio. Duis egestas nibh magna, nec tincidunt turpis lobortis vitae. Vivamus hendrerit sollicitudin nunc, id dignissim ante interdum quis. Suspendisse fringilla velit ac neque fermentum finibus. Curabitur ante libero, imperdiet ut ligula non, scelerisque gravida leo. Cras ante leo, euismod vel feugiat sit amet, porta vitae magna. Vivamus vitae imperdiet eros.
@@ -58,9 +54,9 @@ class Home extends Component {
                     </p>
                 </div>
                 <Draw 
-                    handleClose={this.handleClose} 
-                    open={this.state.open} 
-                    openSecondary={this.state.openSecondary} 
+                    toggleDrawer={this.onToggle} 
+                    left={this.state.left}
+                    right={this.state.right}
                     theme={this.props.theme}
                 />
             </Paper>

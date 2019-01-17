@@ -1,8 +1,7 @@
 import React from 'react';
 import {grey700, grey800, grey100, darkBlack, white} from 'material-ui/styles/colors';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AppBar from 'material-ui/AppBar';
 
 export const redMuiTheme = getMuiTheme({
     palette: {
@@ -45,5 +44,5 @@ export const darkMuiTheme = getMuiTheme({
     },
     appBar: {
         height: 64,
-    }
+    },
 });
