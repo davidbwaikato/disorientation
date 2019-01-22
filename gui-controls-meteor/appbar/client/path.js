@@ -5,10 +5,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Home from "../imports/ui/index.js";
+import Player from "../imports/ui/video.js";
 import GeoTracker from "../imports/ui/geotracker.js";
 import Settings from "../imports/ui/settings.js";
 import Images from "../imports/ui/carousel.js";
 import SettingsTheme from "../imports/ui/settingsTheme.js";
+import Login from "../imports/ui/login.js";
 import { redMuiTheme, darkMuiTheme, orangeMuiTheme } from "../imports/ui/themes.js";
 import history from "./history";
 
@@ -87,6 +89,13 @@ class Path extends Component {
                             />}    
                         /> 
                         <Route 
+                            exact path='/video'
+                            render={(props) => <Player {...props}
+                                openSecondary={toggle}
+                                theme={this.state.muiThemeS}
+                            />}    
+                        />         
+                        <Route 
                             exact path='/settings'
                             render={(props) => <Settings {...props}
                                 openSecondary={toggle}
@@ -100,6 +109,12 @@ class Path extends Component {
                                 openSecondary={toggle}
                                 handleToggle={this.handleToggle}
                                 onClick={this.handleTheme}
+                                theme={this.state.muiThemeS}
+                            />}
+                        />
+                        <Route 
+                            exact path='/login'
+                            render={(props) => <Login {...props}
                                 theme={this.state.muiThemeS}
                             />}
                         />

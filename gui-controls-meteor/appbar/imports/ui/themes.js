@@ -14,9 +14,6 @@ export const redMuiTheme = getMuiTheme({
         height: 64,
         //backgroundColor
     },
-    drawer: {
-        canvasColor: "#F1AD1D"
-    }
 });
 
 export const orangeMuiTheme = getMuiTheme({
@@ -26,13 +23,6 @@ export const orangeMuiTheme = getMuiTheme({
         primary1Color: "#F1AD1D",
         accentColor: "#ED3628"
     },
-    appBar: {
-        height: 64,
-        //backgroundColor
-    },
-    drawer: {
-        canvasColor: "#F1AD1D"
-    }
 });
 
 export const darkMuiTheme = getMuiTheme({
@@ -41,8 +31,5 @@ export const darkMuiTheme = getMuiTheme({
         canvasColor: grey800,
         primary1Color: grey700,
         accent1Color: "#F1AD1D",
-    },
-    appBar: {
-        height: 64,
     },
 });

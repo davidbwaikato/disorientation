@@ -7,7 +7,7 @@ import App from "../imports/ui/app.js";
 
 Meteor.startup(() => {
     if(Meteor.isCordova){
-        StatusBar.hide();
+        StatusBar.styleLightContent();
     }
     ReactDOM.render(<App />, document.getElementById("app"));
 });

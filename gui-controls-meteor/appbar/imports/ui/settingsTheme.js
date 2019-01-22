@@ -9,17 +9,11 @@ import { grey100 } from 'material-ui/styles/colors';
 import Navbar from "./appbar.js";
 import Settings from "./settings.js";
 import history from "../../client/history.js";
+import "./appbar.css";
 
 const styles = {
     content: {
         paddingTop: "72px",
-    },
-    root: { 
-        position: "absolute", 
-        top: "0", 
-        bottom: "0",
-        left: "0",
-        right: "0",
     },
     radio: {
         padding: "16px"
@@ -55,7 +49,7 @@ class SettingsTheme extends Component {
     
     render() {
         return(
-            <Paper style={styles.root}>
+            <Paper className="rootFull">
                 <Navbar onClick={() => history.push("/settings")} setting={this.state.setting} />
                 <div style={styles.content}>
                     <Subheader>Themes</Subheader>

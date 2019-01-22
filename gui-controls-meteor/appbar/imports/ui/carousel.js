@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import Paper from 'material-ui/Paper';
 
 import "./carousel.min.css";
+import "./appbar.css";
 import Navbar from "./appbar.js";
 import Draw from "./drawer.js";
 
@@ -13,13 +14,6 @@ const styles = {
         paddingLeft: "16px",
         paddingRight: "16px"
     },
-    root: { 
-        position: "absolute", 
-        top: "0", 
-        bottom: "0",
-        left: "0",
-        right: "0",
-    }
 };
 
 class Images extends Component {
@@ -41,7 +35,7 @@ class Images extends Component {
     
     render() {
         return (
-            <Paper style={styles.root}>
+            <Paper className="rootFull">
                 <Navbar onClick={this.onClick} toggle={this.state.openSecondary} />
                 <div style={styles.content}>
                     <Carousel showArrows={false} style={{ zIndex: 1 }}>
@@ -70,6 +64,7 @@ class Images extends Component {
                     left={this.state.left}
                     right={this.state.right}
                     theme={this.props.theme}
+                    toggle={this.state.openSecondary}
                 />
             </Paper>
         )

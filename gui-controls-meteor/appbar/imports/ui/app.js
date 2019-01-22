@@ -1,6 +1,8 @@
 import React, { Component } from "react"
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Path from "../../client/path.js";
+import Login from "./login.js";
 import { redMuiTheme } from "./themes.js";
 
 class App extends Component {
@@ -10,11 +12,15 @@ class App extends Component {
             localStorage.setItem("muiThemeS", "redMuiTheme");
             localStorage.setItem("muiTheme", JSON.stringify(redMuiTheme));
         }
-        return(
-            <React.Fragment>
-                <Path /> 
-            </React.Fragment>
-        )
+        if(JSON.parse(localStorage.getItem("auth")) == false || JSON.parse(localStorage.getItem("auth")) == null) {
+            return (
+                <Login />
+            )
+        } else if(JSON.parse(localStorage.getItem("auth")) == true) {
+            return (
+                <Path />
+            )
+        }
     }
 }
 

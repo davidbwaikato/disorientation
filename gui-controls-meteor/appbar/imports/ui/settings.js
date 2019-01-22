@@ -10,19 +10,7 @@ import Paper from 'material-ui/Paper';
 import Navbar from "./appbar.js";
 import Draw from "./drawer.js";
 import history from "../../client/history.js";
-
-const styles = {
-    content: {
-        paddingTop: "72px",
-    },
-    root: { 
-        position: "absolute", 
-        top: "0", 
-        bottom: "0",
-        left: "0",
-        right: "0",
-    }
-};
+import "./appbar.css";
 
 class Settings extends Component {
     constructor(props) {
@@ -50,9 +38,9 @@ class Settings extends Component {
     render() {
         
         return(
-            <Paper style={styles.root}>
+            <Paper className="rootFull">
                 <Navbar onClick={this.onClick} toggle={this.state.openSecondary} />
-                <div style={styles.content}>
+                <div style={{ paddingTop: 72 }}>
                     <List>
                         <Subheader>Settings</Subheader>
                         <ListItem 
@@ -73,6 +61,7 @@ class Settings extends Component {
                     left={this.state.left}
                     right={this.state.right}
                     theme={this.props.theme}
+                    toggle={this.state.openSecondary}
                 />
             </Paper>
         );

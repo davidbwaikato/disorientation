@@ -4,6 +4,7 @@ import Paper from 'material-ui/Paper';
 
 import Navbar from "./appbar.js";
 import Draw from "./drawer.js";
+import "./appbar.css";
 
 const styles = {
     content: {
@@ -13,12 +14,6 @@ const styles = {
         textAlign: "center",
         fontWeight: "lighter"
     },
-    root: { 
-        position: "absolute", 
-        top: "0", 
-        left: "0",
-        right: "0",
-    }
 };
 
 class Home extends Component {
@@ -40,7 +35,7 @@ class Home extends Component {
     
     render() {
         return (
-            <Paper style={styles.root}>
+            <Paper className="root">
                 <Navbar onClick={this.onToggle} toggle={this.state.openSecondary} />
                 <div style={styles.content}>
                     <h3>Hello world!</h3>
@@ -58,6 +53,7 @@ class Home extends Component {
                     left={this.state.left}
                     right={this.state.right}
                     theme={this.props.theme}
+                    toggle={this.state.openSecondary}
                 />
             </Paper>
         );
