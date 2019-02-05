@@ -5,12 +5,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Home from "../imports/ui/index.js";
-import Player from "../imports/ui/video.js";
+import VPlayer from "../imports/ui/video.js";
 import GeoTracker from "../imports/ui/geotracker.js";
 import Settings from "../imports/ui/settings.js";
 import Images from "../imports/ui/carousel.js";
 import SettingsTheme from "../imports/ui/settingsTheme.js";
 import Login from "../imports/ui/login.js";
+import Maps from "../imports/ui/map.js";
 import { redMuiTheme, darkMuiTheme, orangeMuiTheme } from "../imports/ui/themes.js";
 import history from "./history";
 
@@ -19,9 +20,9 @@ class Path extends Component {
         super(props);
         
         this.state = {
-            toggle: JSON.parse(localStorage.getItem("toggle")),
-            muiTheme: JSON.parse(localStorage.getItem("muiTheme")),
-            muiThemeS: localStorage.getItem("muiThemeS"),
+            toggle: Meteor.appstate.toggle,
+            muiTheme: Meteor.appstate.muiTheme,
+            muiThemeS: Meteor.appstate.muiThemeS,
         };
         
         this.handleToggle = this.handleToggle.bind(this);
@@ -30,27 +31,30 @@ class Path extends Component {
     
     handleToggle(openSecondary) {
         this.setState({ toggle: !this.state.toggle });
-        localStorage.setItem("toggle", JSON.stringify(!this.state.toggle));
+        Meteor.appstate.toggle = !this.state.toggle;
     }
     
     handleTheme(e) {
-        if(e == "redMuiTheme") {
-            this.setState({ muiThemeS: e });
-            localStorage.setItem("muiThemeS", "redMuiTheme");
-            this.setState({ muiTheme: redMuiTheme });
-            localStorage.setItem("muiTheme", JSON.stringify(redMuiTheme));
-        } else if(e == "orangeMuiTheme") {
-            this.setState({ muiThemeS: e });
-            localStorage.setItem("muiThemeS", "orangeMuiTheme");
-            this.setState({ muiTheme: orangeMuiTheme });
-            localStorage.setItem("muiTheme", JSON.stringify(orangeMuiTheme));
-        } else if(e == "darkMuiTheme") {
-            this.setState({ muiThemeS: e });
-            localStorage.setItem("muiThemeS", "darkMuiTheme");
-            this.setState({ muiTheme: darkMuiTheme });
-            localStorage.setItem("muiTheme", JSON.stringify(darkMuiTheme));
+        switch(e) {
+            case "redMuiTheme":
+                this.setState({ muiThemeS: e });
+                Meteor.appstate.muiThemeS = "redMuiTheme";
+                this.setState({ muiTheme: redMuiTheme });
+                Meteor.appstate.muiTheme = redMuiTheme;
+                break;
+            case "orangeMuiTheme":
+                this.setState({ muiThemeS: e });
+                Meteor.appstate.muiThemeS = "orangeMuiTheme";
+                this.setState({ muiTheme: orangeMuiTheme });
+                Meteor.appstate.muiTheme = orangeMuiTheme;
+                break;
+            case "darkMuiTheme":
+                this.setState({ muiThemeS: e });
+                Meteor.appstate.muiThemeS = "darkMuiTheme";
+                this.setState({ muiTheme: darkMuiTheme });
+                Meteor.appstate.muiTheme = darkMuiTheme;
+                break;
         }
-        
     }
     
     render() {
@@ -90,11 +94,18 @@ class Path extends Component {
                         /> 
                         <Route 
                             exact path='/video'
-                            render={(props) => <Player {...props}
+                            render={(props) => <VPlayer {...props}
                                 openSecondary={toggle}
                                 theme={this.state.muiThemeS}
                             />}    
-                        />         
+                        />  
+                        <Route 
+                            exact path='/map'
+                            render={(props) => <Maps {...props}
+                                openSecondary={toggle}
+                                theme={this.state.muiThemeS}
+                            />}    
+                        />
                         <Route 
                             exact path='/settings'
                             render={(props) => <Settings {...props}

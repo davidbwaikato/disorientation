@@ -27,6 +27,7 @@ class Home extends Component {
         };
         
         this.onToggle = this.onToggle.bind(this);
+
     }
     
     onToggle = (side, open) => () => {
@@ -54,6 +55,7 @@ class Home extends Component {
                     right={this.state.right}
                     theme={this.props.theme}
                     toggle={this.state.openSecondary}
+                    onClick={this.onClick}
                 />
             </Paper>
         );

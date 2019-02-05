@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import Toggle from 'material-ui/Toggle';

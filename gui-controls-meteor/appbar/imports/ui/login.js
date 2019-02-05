@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import ReactDOM, { render } from "react-dom";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Path from "../../client/path.js";
 import App from "./app.js"
@@ -54,7 +54,7 @@ class Login extends Component {
             errors: []
         };
         
-        localStorage.setItem("auth", JSON.stringify(false));
+        Meteor.appstate.auth = false;
     }
     
     handleChange = e => {
@@ -73,7 +73,7 @@ class Login extends Component {
             this.setState({ errors });
             return;
         } else {
-            localStorage.setItem("auth", JSON.stringify(true));
+            Meteor.appstate.auth = true;
             <Path />
         }
     }

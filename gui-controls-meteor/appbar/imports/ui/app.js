@@ -7,16 +7,16 @@ import { redMuiTheme } from "./themes.js";
 
 class App extends Component {
     render() {
-        if(localStorage.getItem("toggle") == null) {
-            localStorage.setItem("toggle", "false");
-            localStorage.setItem("muiThemeS", "redMuiTheme");
-            localStorage.setItem("muiTheme", JSON.stringify(redMuiTheme));
+        if(Meteor.appstate.toggle == null) {
+            Meteor.appstate.toggle = false;
+            Meteor.appstate.muiThemeS = "redMuiTheme";
+            Meteor.appstate.muiTheme = redMuiTheme;
         }
-        if(JSON.parse(localStorage.getItem("auth")) == false || JSON.parse(localStorage.getItem("auth")) == null) {
+        if(Meteor.appstate.auth == false || Meteor.appstate.auth == null) {
             return (
                 <Login />
             )
-        } else if(JSON.parse(localStorage.getItem("auth")) == true) {
+        } else if(Meteor.appstate.auth == true) {
             return (
                 <Path />
             )

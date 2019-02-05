@@ -1,5 +1,5 @@
 import React from 'react';
-import {grey700, grey800, grey100, darkBlack, white} from 'material-ui/styles/colors';
+import { grey700, grey800, grey100, darkBlack, white } from 'material-ui/styles/colors';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 

@@ -40,8 +40,8 @@ class Player extends Component {
             <Paper className="rootFull">
                 <Navbar onClick={this.onToggle} toggle={this.state.openSecondary} />
                 <div style={{ paddingTop: 72 }}>
-                    <h7>Turn/tilt your phone or swipe using your finger to have a 360 look</h7>
-                    <ReactPlayer url="https://youtu.be/5gECD9ocfkE" width={w} height={h} controls />
+                    <h5>Turn/tilt your phone or swipe using your finger to have a 360 look</h5>
+                    <ReactPlayer url="https://youtu.be/5gECD9ocfkE" width={w} height={h} controls playsinline />
                 </div>
                 <Draw 
                     toggleDrawer={this.onToggle} 

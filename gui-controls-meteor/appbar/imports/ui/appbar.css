@@ -12,3 +12,13 @@
     right: 0;
     bottom: 0;
 }
+
+.leaflet-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.black {
+    color: black;
+}

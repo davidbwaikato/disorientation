@@ -9,5 +9,14 @@ Meteor.startup(() => {
     if(Meteor.isCordova){
         StatusBar.styleLightContent();
     }
+    Meteor.appstate = new Proxy({}, {
+            set: function (target, key, value) {
+                localStorage.setItem("appstate_"+key, JSON.stringify(value));
+                return true;
+            },
+            get: function(obj, prop) {
+                return JSON.parse(localStorage.getItem("appstate_"+prop));
+            }
+    });
     ReactDOM.render(<App />, document.getElementById("app"));
 });

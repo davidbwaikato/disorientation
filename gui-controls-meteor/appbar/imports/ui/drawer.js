@@ -58,15 +58,19 @@ const styles = {
 const Draw = (props) => {
     let colour;
     let back;
-    if(props.theme == "redMuiTheme") {
-        colour = styles.headerRed;
-        back = styles.backWhite;
-    } else if(props.theme == "orangeMuiTheme") {
-        colour = styles.headerOrange;
-        back = styles.backWhite;
-    } else if(props.theme == "darkMuiTheme") {
-        colour = styles.headerDark;
-        back = styles.backDark;
+    switch(props.theme) {
+        case "redMuiTheme":
+            colour = styles.headerRed;
+            back = styles.backWhite;
+            break;
+        case "orangeMuiTheme":
+            colour = styles.headerOrange;
+            back = styles.backWhite;
+            break;
+        case "darkMuiTheme":
+            colour = styles.headerDark;
+            back = styles.backDark;
+            break;
     }
     
     const sideList = (
@@ -76,6 +80,7 @@ const Draw = (props) => {
             <MenuItem primaryText="Geolocation" leftIcon={<Directions />} onClick={() => history.push("/geotracker")} />
             <MenuItem primaryText="Images" leftIcon={<Collections />} onClick={() => history.push("/images")} />
             <MenuItem primaryText="Video" leftIcon={<Videocam />} onClick={() => history.push("/video")} />
+            <MenuItem primaryText="Map" leftIcon={<Videocam />} onClick={() => history.push("/map")} />
             <MenuItem primaryText="Settings" leftIcon={<Settings />} onClick={() => history.push("/settings")} />
             <Divider />
             <Subheader inset={true}>Nested</Subheader>
