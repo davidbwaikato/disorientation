@@ -62,8 +62,7 @@ class Map extends Component {
         var northEast = [{lat: -37.7849526}, {lng: 175.3226781}];
         
         return (
-            <Paper className="rootFull">
-                <Navbar onClick={this.onToggle} toggle={this.state.openSecondary} maxBounds={northEast, southWest}/>
+            <Paper className="root">
                 <div style={{ paddingTop: 64 }}>
                     <LeafletMap center={position} zoom={this.state.zoom} ref={map => this.map = map} >
                         <TileLayer
@@ -79,14 +78,6 @@ class Map extends Component {
                         <Routing map={this.map} className="black"/>
                     </LeafletMap>
                 </div>
-                <Draw 
-                    toggleDrawer={this.onToggle} 
-                    left={this.state.left}
-                    right={this.state.right}
-                    theme={this.props.theme}
-                    toggle={this.state.openSecondary}
-                    onClick={this.onClick}
-                />
             </Paper>
         );
     }

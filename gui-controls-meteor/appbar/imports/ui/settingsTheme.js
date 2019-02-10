@@ -49,7 +49,7 @@ class SettingsTheme extends Component {
     
     render() {
         return(
-            <Paper className="rootFull">
+            <Paper className="root">
                 <Navbar onClick={() => history.push("/settings")} setting={this.state.setting} />
                 <div style={styles.content}>
                     <Subheader>Themes</Subheader>

@@ -37,7 +37,6 @@ class Home extends Component {
     render() {
         return (
             <Paper className="root">
-                <Navbar onClick={this.onToggle} toggle={this.state.openSecondary} />
                 <div style={styles.content}>
                     <h3>Hello world!</h3>
                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum ligula ut leo molestie consequat. Donec eget malesuada ligula. Nam vitae scelerisque est. Etiam placerat hendrerit quam, vel ornare arcu cursus in. Integer ultrices consequat purus, non finibus erat rhoncus ac. Duis ante diam, placerat eu orci id, elementum convallis lorem. Vestibulum pretium varius leo, quis vulputate justo. Fusce augue quam, tempor vel luctus consequat, finibus id odio. Duis egestas nibh magna, nec tincidunt turpis lobortis vitae. Vivamus hendrerit sollicitudin nunc, id dignissim ante interdum quis. Suspendisse fringilla velit ac neque fermentum finibus. Curabitur ante libero, imperdiet ut ligula non, scelerisque gravida leo. Cras ante leo, euismod vel feugiat sit amet, porta vitae magna. Vivamus vitae imperdiet eros.
@@ -49,14 +48,6 @@ class Home extends Component {
         Fusce posuere mauris sed pulvinar lacinia. Mauris sagittis venenatis metus nec vulputate. Praesent euismod eros sed sapien suscipit, at tincidunt diam rhoncus. Donec posuere tincidunt ultricies. Donec dignissim egestas luctus. Etiam sed maximus sem. Etiam vel enim eget magna pellentesque blandit. Donec efficitur interdum ante quis lacinia.
                     </p>
                 </div>
-                <Draw 
-                    toggleDrawer={this.onToggle} 
-                    left={this.state.left}
-                    right={this.state.right}
-                    theme={this.props.theme}
-                    toggle={this.state.openSecondary}
-                    onClick={this.onClick}
-                />
             </Paper>
         );
     }

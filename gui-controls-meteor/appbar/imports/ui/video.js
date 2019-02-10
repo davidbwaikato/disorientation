@@ -37,19 +37,11 @@ class Player extends Component {
         console.log(percent);
         
         return (
-            <Paper className="rootFull">
-                <Navbar onClick={this.onToggle} toggle={this.state.openSecondary} />
+            <Paper className="root">
                 <div style={{ paddingTop: 72 }}>
                     <h5>Turn/tilt your phone or swipe using your finger to have a 360 look</h5>
                     <ReactPlayer url="https://youtu.be/5gECD9ocfkE" width={w} height={h} controls playsinline />
                 </div>
-                <Draw 
-                    toggleDrawer={this.onToggle} 
-                    left={this.state.left}
-                    right={this.state.right}
-                    theme={this.props.theme}
-                    toggle={this.state.openSecondary}
-                />
             </Paper>
         )
     }

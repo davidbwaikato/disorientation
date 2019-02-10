@@ -36,8 +36,7 @@ class Settings extends Component {
     render() {
         
         return(
-            <Paper className="rootFull">
-                <Navbar onClick={this.onClick} toggle={this.state.openSecondary} />
+            <Paper className="root">
                 <div style={{ paddingTop: 72 }}>
                     <List>
                         <Subheader>Settings</Subheader>
@@ -54,13 +53,6 @@ class Settings extends Component {
                         <ListItem primaryText="Themes" onClick={() => history.push("/settings/theme")} />
                     </List>
                 </div>
-                <Draw 
-                    toggleDrawer={this.onClick} 
-                    left={this.state.left}
-                    right={this.state.right}
-                    theme={this.props.theme}
-                    toggle={this.state.openSecondary}
-                />
             </Paper>
         );
     }

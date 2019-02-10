@@ -35,8 +35,7 @@ class Images extends Component {
     
     render() {
         return (
-            <Paper className="rootFull">
-                <Navbar onClick={this.onClick} toggle={this.state.openSecondary} />
+            <Paper className="root">
                 <div style={styles.content}>
                     <Carousel showArrows={false} style={{ zIndex: 1 }}>
                         <div>
@@ -59,13 +58,6 @@ class Images extends Component {
                         </div>
                     </Carousel>
                 </div>
-                <Draw 
-                    toggleDrawer={this.onClick} 
-                    left={this.state.left}
-                    right={this.state.right}
-                    theme={this.props.theme}
-                    toggle={this.state.openSecondary}
-                />
             </Paper>
         )
     }

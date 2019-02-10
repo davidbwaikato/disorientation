@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
 import App from "../imports/ui/app.js";
+import Main from "../imports/ui/main.js"
 
 Meteor.startup(() => {
     if(Meteor.isCordova){
@@ -18,5 +19,5 @@ Meteor.startup(() => {
                 return JSON.parse(localStorage.getItem("appstate_"+prop));
             }
     });
-    ReactDOM.render(<App />, document.getElementById("app"));
+    ReactDOM.render(<Main />, document.getElementById("app"));
 });

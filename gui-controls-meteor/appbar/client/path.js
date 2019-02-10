@@ -15,123 +15,62 @@ import Maps from "../imports/ui/map.js";
 import { redMuiTheme, darkMuiTheme, orangeMuiTheme } from "../imports/ui/themes.js";
 import history from "./history";
 
-class Path extends Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            toggle: Meteor.appstate.toggle,
-            muiTheme: Meteor.appstate.muiTheme,
-            muiThemeS: Meteor.appstate.muiThemeS,
-        };
-        
-        this.handleToggle = this.handleToggle.bind(this);
-        this.handleTheme = this.handleTheme.bind(this);
-    }
-    
-    handleToggle(openSecondary) {
-        this.setState({ toggle: !this.state.toggle });
-        Meteor.appstate.toggle = !this.state.toggle;
-    }
-    
-    handleTheme(e) {
-        switch(e) {
-            case "redMuiTheme":
-                this.setState({ muiThemeS: e });
-                Meteor.appstate.muiThemeS = "redMuiTheme";
-                this.setState({ muiTheme: redMuiTheme });
-                Meteor.appstate.muiTheme = redMuiTheme;
-                break;
-            case "orangeMuiTheme":
-                this.setState({ muiThemeS: e });
-                Meteor.appstate.muiThemeS = "orangeMuiTheme";
-                this.setState({ muiTheme: orangeMuiTheme });
-                Meteor.appstate.muiTheme = orangeMuiTheme;
-                break;
-            case "darkMuiTheme":
-                this.setState({ muiThemeS: e });
-                Meteor.appstate.muiThemeS = "darkMuiTheme";
-                this.setState({ muiTheme: darkMuiTheme });
-                Meteor.appstate.muiTheme = darkMuiTheme;
-                break;
-        }
-    }
-    
-    render() {
-        const toggle = this.state.toggle;
-        
+class Path extends Component { 
+    render() {       
         return(
-            <MuiThemeProvider muiTheme={getMuiTheme(this.state.muiTheme)}>
                 <Router history={history}>
                     <Switch>
                         <Route 
                             exact path='/'
                             render={(props) => <Home {...props}
-                                openSecondary={toggle}
-                                theme={this.state.muiThemeS}
                             />}
                         />
                         <Route 
                             exact path='/index'
                             render={(props) => <Home {...props}
-                                openSecondary={toggle}
-                                theme={this.state.muiThemeS}
                             />}
                         />
                         <Route 
                             exact path='/geotracker'
                             render={(props) => <GeoTracker {...props}
-                                openSecondary={toggle}
-                                theme={this.state.muiThemeS}
                             />}    
                         /> 
                         <Route 
                             exact path='/images'
                             render={(props) => <Images {...props}
-                                openSecondary={toggle}
-                                theme={this.state.muiThemeS}
                             />}    
                         /> 
                         <Route 
                             exact path='/video'
                             render={(props) => <VPlayer {...props}
-                                openSecondary={toggle}
-                                theme={this.state.muiThemeS}
+                        
                             />}    
                         />  
                         <Route 
                             exact path='/map'
                             render={(props) => <Maps {...props}
-                                openSecondary={toggle}
-                                theme={this.state.muiThemeS}
                             />}    
                         />
                         <Route 
                             exact path='/settings'
                             render={(props) => <Settings {...props}
-                                openSecondary={toggle}
-                                handleToggle={this.handleToggle}
-                                theme={this.state.muiThemeS}
+                                handleToggle={this.props.handleToggle}
                             />}
                         />
                         <Route 
                             exact path='/settings/theme'
                             render={(props) => <SettingsTheme {...props}
-                                openSecondary={toggle}
-                                handleToggle={this.handleToggle}
-                                onClick={this.handleTheme}
-                                theme={this.state.muiThemeS}
+                                onClick={this.props.handleTheme}
+                                theme={this.props.theme}
                             />}
                         />
                         <Route 
                             exact path='/login'
                             render={(props) => <Login {...props}
-                                theme={this.state.muiThemeS}
                             />}
                         />
                     </Switch>
                 </Router>
-            </MuiThemeProvider>
         )
     }
     

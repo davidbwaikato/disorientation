@@ -74,7 +74,7 @@ class Login extends Component {
             return;
         } else {
             Meteor.appstate.auth = true;
-            <Path />
+            <App />
         }
     }
     

@@ -69,8 +69,7 @@ class GeoTracker extends Component {
     
     render() {
         return (
-            <Paper className="rootFull">
-                <Navbar onClick={this.onClick} toggle={this.state.openSecondary} />
+            <Paper className="root">
                 <div style={{ paddingTop: 72 }}>
                     <div className="text-center" style={{ margin: "10px 0" }}>
                         <h4>GPS</h4>
@@ -105,13 +104,6 @@ class GeoTracker extends Component {
                         <button className="btn btn-primary" style={{ margin: "5px 0" }} onClick={this.getLocation.bind(this)}>Get                                           location</button>
                     </div>
                 </div>
-                <Draw 
-                    toggleDrawer={this.onClick} 
-                    left={this.state.left}
-                    right={this.state.right}
-                    theme={this.props.theme}
-                    toggle={this.state.openSecondary}
-                />
             </Paper>
         );
     }

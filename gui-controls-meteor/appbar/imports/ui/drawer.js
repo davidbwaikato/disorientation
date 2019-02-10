@@ -12,8 +12,10 @@ import Person from 'material-ui/svg-icons/social/person';
 import Videocam from 'material-ui/svg-icons/av/videocam';
 import history from "../../client/history";
 import { grey800, grey700, grey100 } from 'material-ui/styles/colors';
+import Paper from 'material-ui/Paper';
 
 import Panel from "./panel.js";
+import "./appbar.css";
 
 const styles = {
     content: {
@@ -42,17 +44,6 @@ const styles = {
     list: {
         width: 250
     },
-    backWhite: {
-
-    },
-    backDark: {
-        backgroundColor: grey800,
-        bottom: 0,
-        top: 0,
-        left: 0,
-        right: 0,
-        position: "fixed"
-    }
 };
 
 const Draw = (props) => {
@@ -61,20 +52,17 @@ const Draw = (props) => {
     switch(props.theme) {
         case "redMuiTheme":
             colour = styles.headerRed;
-            back = styles.backWhite;
             break;
         case "orangeMuiTheme":
             colour = styles.headerOrange;
-            back = styles.backWhite;
             break;
         case "darkMuiTheme":
             colour = styles.headerDark;
-            back = styles.backDark;
             break;
     }
     
     const sideList = (
-        <div style={back}>
+        <Paper className="root">
             <Panel title="Menu" header={colour}></Panel>
             <MenuItem primaryText="Home" leftIcon={<Home />} onClick={() => history.push("/index")} />
             <MenuItem primaryText="Geolocation" leftIcon={<Directions />} onClick={() => history.push("/geotracker")} />
@@ -93,8 +81,8 @@ const Draw = (props) => {
                 ]}
             />
             <Divider />
-            <MenuItem primaryText="Logout" leftIcon={<Person />} onClick={() => history.push("/login")} />
-        </div>
+            <MenuItem primaryText="Logout" leftIcon={<Person />} onClick={props.onLogin} />
+        </Paper>
     )
 
     
