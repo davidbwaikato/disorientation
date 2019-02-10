@@ -1,0 +1,24 @@
+.style:active {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.panelW {
+    background-color: white;
+}
+
+.panelG {
+    background-color: #fcfcfc;
+}
+
+.panelY {
+    background-color: #fffcef;
+    color: black;
+}
+
+.panelB {
+    background-color: #edf2ff;
+}
+
+.panelO {
+    background-color: #fff3d8;
+}

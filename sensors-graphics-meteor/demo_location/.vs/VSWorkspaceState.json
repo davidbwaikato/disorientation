@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.meteor",
+    "\\client",
+    "\\imports",
+    "\\imports\\ui",
+    "\\public",
+    "\\server"
+  ],
+  "SelectedNode": "\\imports\\ui\\Geolocation.js",
+  "PreviewInSolutionExplorer": false
+}
