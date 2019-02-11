@@ -3,9 +3,6 @@ import { Geolocation } from 'meteor/mdg:geolocation';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 
-import Navbar from "./appbar.js";
-import Draw from "./drawer.js";
-
 class GeolocationX extends Component {
     constructor(props) {
         super(props);

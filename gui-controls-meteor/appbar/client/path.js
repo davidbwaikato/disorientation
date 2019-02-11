@@ -18,59 +18,29 @@ import history from "./history";
 class Path extends Component { 
     render() {       
         return(
-                <Router history={history}>
-                    <Switch>
-                        <Route 
-                            exact path='/'
-                            render={(props) => <Home {...props}
-                            />}
-                        />
-                        <Route 
-                            exact path='/index'
-                            render={(props) => <Home {...props}
-                            />}
-                        />
-                        <Route 
-                            exact path='/geotracker'
-                            render={(props) => <GeoTracker {...props}
-                            />}    
-                        /> 
-                        <Route 
-                            exact path='/images'
-                            render={(props) => <Images {...props}
-                            />}    
-                        /> 
-                        <Route 
-                            exact path='/video'
-                            render={(props) => <VPlayer {...props}
-                        
-                            />}    
-                        />  
-                        <Route 
-                            exact path='/map'
-                            render={(props) => <Maps {...props}
-                            />}    
-                        />
-                        <Route 
-                            exact path='/settings'
-                            render={(props) => <Settings {...props}
-                                handleToggle={this.props.handleToggle}
-                            />}
-                        />
-                        <Route 
-                            exact path='/settings/theme'
-                            render={(props) => <SettingsTheme {...props}
-                                onClick={this.props.handleTheme}
-                                theme={this.props.theme}
-                            />}
-                        />
-                        <Route 
-                            exact path='/login'
-                            render={(props) => <Login {...props}
-                            />}
-                        />
-                    </Switch>
-                </Router>
+            <Router history={history}>
+                <Switch>
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/index' component={Home}/>
+                    <Route exact path='/geotracker' component={GeoTracker}/> 
+                    <Route exact path='/images' component={Images} /> 
+                    <Route exact path='/video' component={VPlayer} />  
+                    <Route exact path='/map' component={Maps} />
+                    <Route 
+                        exact path='/settings'
+                        render={(props) => <Settings {...props}
+                            handleToggle={this.props.handleToggle}
+                        />}
+                    />
+                    <Route 
+                        exact path='/settings/theme'
+                        render={(props) => <SettingsTheme {...props}
+                            onClick={this.props.handleTheme}
+                            theme={this.props.theme}
+                        />}
+                    />
+                </Switch>
+            </Router>
         )
     }
     

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 
-import Navbar from "./appbar.js";
-import Draw from "./drawer.js";
 import "./appbar.css";
 
 const styles = {
@@ -23,15 +21,7 @@ class Home extends Component {
         this.state = { 
             left: false,
             right: false,
-            openSecondary: this.props.openSecondary
         };
-        
-        this.onToggle = this.onToggle.bind(this);
-
-    }
-    
-    onToggle = (side, open) => () => {
-        this.setState({ [side]: open });
     }
     
     render() {

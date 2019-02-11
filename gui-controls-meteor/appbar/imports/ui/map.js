@@ -3,8 +3,6 @@ import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 import ReactLeaflet, { latLng, latLngBounds } from "react-leaflet";
 
-import Navbar from "./appbar.js";
-import Draw from "./drawer.js";
 import Routing from './routing.js';
 import "./appbar.css";
 
@@ -19,20 +17,12 @@ class Map extends Component {
         this.state = { 
             left: false,
             right: false,
-            openSecondary: this.props.openSecondary,
             lat: -37.7888634,
             lng: 175.3176464,
             latC: 0,
             lngC: 0,
             zoom: 17
         };
-        
-        this.onToggle = this.onToggle.bind(this);
-    }
-    
-    onToggle = (side, open) => (e) => {
-        this.setState({ [side]: open });
-        e.preventDefault();
     }
     
     componentDidMount() {
@@ -62,8 +52,8 @@ class Map extends Component {
         var northEast = [{lat: -37.7849526}, {lng: 175.3226781}];
         
         return (
-            <Paper className="root">
-                <div style={{ paddingTop: 64 }}>
+            <Paper className="root" style={{ marginTop: 64 }}>
+                <div>
                     <LeafletMap center={position} zoom={this.state.zoom} ref={map => this.map = map} >
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -75,7 +65,7 @@ class Map extends Component {
                             fillOpacity={0.7}
                             center={position}
                         />
-                        <Routing map={this.map} className="black"/>
+                        <Routing map={this.map}/>
                     </LeafletMap>
                 </div>
             </Paper>

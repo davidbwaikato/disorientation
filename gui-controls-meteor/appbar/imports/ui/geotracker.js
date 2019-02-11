@@ -15,14 +15,7 @@ class GeoTracker extends Component {
             lng: 0,
             left: false,
             right: false,
-            openSecondary: this.props.openSecondary
         }
-        
-        this.onClick = this.onClick.bind(this);
-    }
-    
-    onClick = (side, open) => () => {
-        this.setState({ [side]: open });
     }
     
     componentWillUnmount() {

@@ -35,7 +35,6 @@ class SettingsTheme extends Component {
         
         this.state = { 
             setting: true,
-            muiTheme: this.props.theme
         }
         
         this.onClick = this.onClick.bind(this)

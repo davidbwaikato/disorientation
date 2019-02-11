@@ -5,8 +5,6 @@ import Toggle from 'material-ui/Toggle';
 import { List, ListItem } from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 
-import Navbar from "./appbar.js";
-import Draw from "./drawer.js";
 import history from "../../client/history.js";
 import "./appbar.css";
 
@@ -19,15 +17,10 @@ class Settings extends Component {
             right: false,
             openSecondary: this.props.openSecondary
         };
-        
-        this.onClick = this.onClick.bind(this);
+
         this.handleToggle = this.handleToggle.bind(this);
     }
-    
-    onClick = (side, open) => () => {
-        this.setState({ [side]: open });
-    }
-    
+
     handleToggle(e) {
         this.setState({ openSecondary: !this.state.openSecondary});
         this.props.handleToggle(this.state.openSecondary);

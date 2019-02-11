@@ -10,10 +10,6 @@ export const redMuiTheme = getMuiTheme({
         primary1Color: "#ED3628",
         accentColor: "#F1AD1D"
     },
-    appBar: {
-        height: 64,
-        //backgroundColor
-    },
 });
 
 export const orangeMuiTheme = getMuiTheme({

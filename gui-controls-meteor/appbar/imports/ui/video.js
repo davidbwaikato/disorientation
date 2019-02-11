@@ -13,14 +13,7 @@ class Player extends Component {
         this.state = { 
             left: false,
             right: false,
-            openSecondary: this.props.openSecondary
         };
-        
-        this.onToggle = this.onToggle.bind(this);
-    }
-    
-    onToggle = (side, open) => () => {
-        this.setState({ [side]: open });
     }
     
     render() {
@@ -40,7 +33,7 @@ class Player extends Component {
             <Paper className="root">
                 <div style={{ paddingTop: 72 }}>
                     <h5>Turn/tilt your phone or swipe using your finger to have a 360 look</h5>
-                    <ReactPlayer url="https://youtu.be/5gECD9ocfkE" width={w} height={h} controls playsinline />
+                    <ReactPlayer url="https://youtu.be/5gECD9ocfkE" width={w} height={h} playsinline />
                 </div>
             </Paper>
         )

@@ -5,8 +5,6 @@ import Paper from 'material-ui/Paper';
 
 import "./carousel.min.css";
 import "./appbar.css";
-import Navbar from "./appbar.js";
-import Draw from "./drawer.js";
 
 const styles = {
     content: {
@@ -23,14 +21,7 @@ class Images extends Component {
         this.state = {
             left: false,
             right: false,
-            openSecondary: this.props.openSecondary
         };
-        
-        this.onClick = this.onClick.bind(this);
-    }
-    
-    onClick = (side, open) => () => {
-        this.setState({ [side]: open });
     }
     
     render() {
