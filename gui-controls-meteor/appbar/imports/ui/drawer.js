@@ -7,6 +7,7 @@ import Subheader from 'material-ui/Subheader';
 import Home from 'material-ui/svg-icons/action/home';
 import Directions from 'material-ui/svg-icons/maps/directions';
 import Settings from 'material-ui/svg-icons/action/settings';
+import Layers from 'material-ui/svg-icons/maps/layers';
 import Collections from 'material-ui/svg-icons/image/collections';
 import Person from 'material-ui/svg-icons/social/person';
 import Videocam from 'material-ui/svg-icons/av/videocam';
@@ -70,6 +71,7 @@ const Draw = (props) => {
             <MenuItem primaryText="Video" leftIcon={<Videocam />} onClick={() => history.push("/video")} />
             <MenuItem primaryText="Map" leftIcon={<Videocam />} onClick={() => history.push("/map")} />
             <MenuItem primaryText="Settings" leftIcon={<Settings />} onClick={() => history.push("/settings")} />
+            <MenuItem primaryText="Heatmap" leftIcon={<Layers />} onClick={() => history.push("/heatmap")} />
             <Divider />
             <Subheader inset={true}>Nested</Subheader>
             <MenuItem 

@@ -14,66 +14,73 @@ import Login from "../imports/ui/login.js";
 import Maps from "../imports/ui/map.js";
 import { redMuiTheme, darkMuiTheme, orangeMuiTheme } from "../imports/ui/themes.js";
 import history from "./history";
+import Heatmap from '../imports/ui/heatmap.js';
 
-class Path extends Component { 
-    render() {       
-        return(
-                <Router history={history}>
-                    <Switch>
-                        <Route 
-                            exact path='/'
-                            render={(props) => <Home {...props}
-                            />}
-                        />
-                        <Route 
-                            exact path='/index'
-                            render={(props) => <Home {...props}
-                            />}
-                        />
-                        <Route 
-                            exact path='/geotracker'
-                            render={(props) => <GeoTracker {...props}
-                            />}    
-                        /> 
-                        <Route 
-                            exact path='/images'
-                            render={(props) => <Images {...props}
-                            />}    
-                        /> 
-                        <Route 
-                            exact path='/video'
-                            render={(props) => <VPlayer {...props}
-                        
-                            />}    
-                        />  
-                        <Route 
-                            exact path='/map'
-                            render={(props) => <Maps {...props}
-                            />}    
-                        />
-                        <Route 
-                            exact path='/settings'
-                            render={(props) => <Settings {...props}
-                                handleToggle={this.props.handleToggle}
-                            />}
-                        />
-                        <Route 
-                            exact path='/settings/theme'
-                            render={(props) => <SettingsTheme {...props}
-                                onClick={this.props.handleTheme}
-                                theme={this.props.theme}
-                            />}
-                        />
-                        <Route 
-                            exact path='/login'
-                            render={(props) => <Login {...props}
-                            />}
-                        />
-                    </Switch>
-                </Router>
+class Path extends Component {
+    render() {
+        return (
+            <Router history={history}>
+                <Switch>
+                    <Route
+                        exact path='/'
+                        render={(props) => <Home {...props}
+                        />}
+                    />
+                    <Route
+                        exact path='/index'
+                        render={(props) => <Home {...props}
+                        />}
+                    />
+                    <Route
+                        exact path='/geotracker'
+                        render={(props) => <GeoTracker {...props}
+                        />}
+                    />
+                    <Route
+                        exact path='/images'
+                        render={(props) => <Images {...props}
+                        />}
+                    />
+                    <Route
+                        exact path='/video'
+                        render={(props) => <VPlayer {...props}
+
+                        />}
+                    />
+                    <Route
+                        exact path='/map'
+                        render={(props) => <Maps {...props}
+                        />}
+                    />
+                    <Route
+                        exact path='/heatmap'
+                        render={(props) => <Heatmap {...props}
+
+                        />}
+                    />
+                    <Route
+                        exact path='/settings'
+                        render={(props) => <Settings {...props}
+                            handleToggle={this.props.handleToggle}
+                        />}
+                    />
+                    <Route
+                        exact path='/settings/theme'
+                        render={(props) => <SettingsTheme {...props}
+                            onClick={this.props.handleTheme}
+                            theme={this.props.theme}
+                        />}
+                    />
+                    <Route
+                        exact path='/login'
+                        render={(props) => <Login {...props}
+                        />}
+                    />
+                </Switch>
+            </Router>
         )
     }
-    
+
 }
 
 export default Path;

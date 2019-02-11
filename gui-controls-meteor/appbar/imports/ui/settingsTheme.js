@@ -71,8 +71,16 @@ class SettingsTheme extends Component {
                                 style={styles.button}
                         />
                         <RadioButton
-                                label="Dark Theme"
+                                label="Daniel Thomas Theme"
                                 value="darkMuiTheme"
+                                onClick={this.onClick}
+                                checkedIcon={<Done />}
+                                uncheckedIcon={<Empty />}
+                                style={styles.button}
+                        />
+                        <RadioButton
+                                label="Callum's Theme"
+                                value="callumMuiTheme"
                                 onClick={this.onClick}
                                 checkedIcon={<Done />}
                                 uncheckedIcon={<Empty />}
