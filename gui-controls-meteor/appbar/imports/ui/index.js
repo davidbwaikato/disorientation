@@ -1,17 +1,24 @@
 import React, { Component } from "react";
 import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
+import { Column, Row } from 'simple-flexbox';
 
 import "./appbar.css";
 
 const styles = {
     content: {
-        paddingTop: "78px",
+        paddingTop: "70px",
         paddingLeft: "16px",
         paddingRight: "16px",
-        textAlign: "center",
         fontWeight: "lighter"
     },
+    img: {
+        display: "block",
+        marginLeft: "auto",
+        marginRight: "auto",
+        width: "100%",
+        height: "100%",
+    }
 };
 
 class Home extends Component {
@@ -28,14 +35,12 @@ class Home extends Component {
         return (
             <Paper className="root">
                 <div style={styles.content}>
-                    <h3>Hello world!</h3>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum ligula ut leo molestie consequat. Donec eget malesuada ligula. Nam vitae scelerisque est. Etiam placerat hendrerit quam, vel ornare arcu cursus in. Integer ultrices consequat purus, non finibus erat rhoncus ac. Duis ante diam, placerat eu orci id, elementum convallis lorem. Vestibulum pretium varius leo, quis vulputate justo. Fusce augue quam, tempor vel luctus consequat, finibus id odio. Duis egestas nibh magna, nec tincidunt turpis lobortis vitae. Vivamus hendrerit sollicitudin nunc, id dignissim ante interdum quis. Suspendisse fringilla velit ac neque fermentum finibus. Curabitur ante libero, imperdiet ut ligula non, scelerisque gravida leo. Cras ante leo, euismod vel feugiat sit amet, porta vitae magna. Vivamus vitae imperdiet eros.
-
-        Sed sit amet mollis dui, ac venenatis neque. Nunc laoreet quam quam, eget sagittis turpis sodales ut. Morbi ullamcorper, magna id pretium egestas, lorem turpis efficitur quam, ac imperdiet metus nisi vel neque. Quisque eget velit nec odio semper congue. Donec nec suscipit purus. Nulla efficitur turpis id dignissim dignissim. Phasellus nec nibh augue. Curabitur suscipit feugiat lacus, vel blandit neque posuere at.
-
-        Vestibulum gravida nunc eget hendrerit tincidunt. Vivamus at tempor sem, nec luctus lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt nibh vel metus tempus, vel tincidunt est lobortis. Sed in mi maximus, pulvinar tortor id, tincidunt orci. Maecenas id malesuada lacus. Maecenas a tincidunt diam. In aliquet quam at mattis lobortis. Praesent in rutrum neque, eget dapibus lectus. In eget aliquam eros. Etiam non urna ipsum. Pellentesque eu imperdiet sapien, sit amet tempus turpis.
-
-        Fusce posuere mauris sed pulvinar lacinia. Mauris sagittis venenatis metus nec vulputate. Praesent euismod eros sed sapien suscipit, at tincidunt diam rhoncus. Donec posuere tincidunt ultricies. Donec dignissim egestas luctus. Etiam sed maximus sem. Etiam vel enim eget magna pellentesque blandit. Donec efficitur interdum ante quis lacinia.
+                    <Row>
+                        <img src="../../waikato.png" style={styles.img} />
+                    </Row>
+                    <p> Welcome to the University of Waikato's Orientation Application for 2020! You can view a map of the campus and receive directions anywhere around the university. From this map, you can also view 3D videos of different spots across the campus to help you familiarise with the grounds.
+                    </p>
+                    <p> There is a small gallery of photos available for you to peruse which highlights some aspects of Waikato University. With the setting page, you will be able to change the theme of the application to suit your tastes.
                     </p>
                 </div>
             </Paper>

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { redMuiTheme } from "./themes.js";
 
 import App from "./app.js";
 import Login from "./login.js";

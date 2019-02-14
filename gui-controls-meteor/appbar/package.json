@@ -25,6 +25,7 @@
     "react-responsive-carousel": "^3.1.45",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
+    "simple-flexbox": "^1.2.0",
     "video-react": "^0.13.2"
   },
   "meteor": {

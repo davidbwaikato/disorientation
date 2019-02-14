@@ -43,7 +43,7 @@ class Routing extends Component {
       });
 
       this.routing = L.Routing.control({
-        plan,
+
         router: L.Routing.mapbox(MAPBOX_TOKEN, options),
       });
 

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Switch, Route, Router, withRouter } from "react-router-dom";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import Home from "../imports/ui/index.js";
 import VPlayer from "../imports/ui/video.js";
@@ -12,7 +10,7 @@ import Images from "../imports/ui/carousel.js";
 import SettingsTheme from "../imports/ui/settingsTheme.js";
 import Login from "../imports/ui/login.js";
 import Maps from "../imports/ui/map.js";
-import { redMuiTheme, darkMuiTheme, orangeMuiTheme } from "../imports/ui/themes.js";
+import Heatmap from '../imports/ui/heatmap.js';
 import history from "./history";
 
 class Path extends Component { 
@@ -26,13 +24,14 @@ class Path extends Component {
                     <Route exact path='/images' component={Images} /> 
                     <Route exact path='/video' component={VPlayer} />  
                     <Route exact path='/map' component={Maps} />
-                    <Route 
+                    <Route exact path='/heatmap' component={Heatmap} />
+                    <Route
                         exact path='/settings'
                         render={(props) => <Settings {...props}
                             handleToggle={this.props.handleToggle}
                         />}
                     />
-                    <Route 
+                    <Route
                         exact path='/settings/theme'
                         render={(props) => <SettingsTheme {...props}
                             onClick={this.props.handleTheme}
@@ -43,7 +42,7 @@ class Path extends Component {
             </Router>
         )
     }
-    
+
 }
 
 export default Path;

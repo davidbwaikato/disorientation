@@ -38,7 +38,6 @@ class SettingsTheme extends Component {
         }
         
         this.onClick = this.onClick.bind(this)
-        this.myRef = React.createRef();
     }
     
     onClick(e) {
@@ -72,6 +71,14 @@ class SettingsTheme extends Component {
                         <RadioButton
                                 label="Dark Theme"
                                 value="darkMuiTheme"
+                                onClick={this.onClick}
+                                checkedIcon={<Done />}
+                                uncheckedIcon={<Empty />}
+                                style={styles.button}
+                        />
+                        <RadioButton
+                                label="Callum's Theme"
+                                value="callumMuiTheme"
                                 onClick={this.onClick}
                                 checkedIcon={<Done />}
                                 uncheckedIcon={<Empty />}

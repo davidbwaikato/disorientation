@@ -2,14 +2,26 @@ import React, { Component } from "react";
 import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 import ReactLeaflet, { latLng, latLngBounds } from "react-leaflet";
+import Fab from '@material-ui/core/Fab';
+import CenterFocusStrong from '@material-ui/icons/CenterFocusStrong';
 
 import Routing from './routing.js';
 import "./appbar.css";
 
+const styles = {
+    content: {
+        position: "absolute",
+        bottom: "30px",
+        right: "20px",
+        zIndex: "2",
+        outline: "0",
+    },
+};
+
 const { 
     Map: LeafletMap, TileLayer, Marker, Popup, CircleMarker, SVG,
 } = ReactLeaflet
-
+    
 class Map extends Component {
     constructor(props) {
         super(props);
@@ -17,12 +29,12 @@ class Map extends Component {
         this.state = { 
             left: false,
             right: false,
-            lat: -37.7888634,
-            lng: 175.3176464,
-            latC: 0,
-            lngC: 0,
+            lat: 0,
+            lng: 0,
             zoom: 17
         };
+
+        this.handleCentre = this.handleCentre.bind(this);
     }
     
     componentDidMount() {
@@ -44,17 +56,29 @@ class Map extends Component {
         }
     }
     
+    handleCentre(e) {
+        if(this.state.lat == 0 || this.state.lng == 0 ){
+            this.map.leafletElement.panTo([-37.788096, 175.317366]);
+        } else if(this.map != null || this.map != undefined) {
+            this.map.leafletElement.panTo([this.state.lat, this.state.lng]);
+        }
+        console.log("set");
+    }
+
     render() {
         var w = window.innerWidth;
         var h = window.innerHeight - 64;
         var position = [this.state.lat, this.state.lng];
-        var southWest = [{lat: -37.790545}, {lng: 175.308736}];
-        var northEast = [{lat: -37.7849526}, {lng: 175.3226781}];
         
         return (
-            <Paper className="root" style={{ marginTop: 64 }}>
+            <Paper className="root cmh_v-flex-align-wrapper" style={{ color: "black" }}>
                 <div>
-                    <LeafletMap center={position} zoom={this.state.zoom} ref={map => this.map = map} >
+                    <Fab color="default" onClick={this.handleCentre} style={styles.content}>
+                            <CenterFocusStrong />
+                        </Fab>
+                    <div className="root cmh_v-flex-align-wrapper">
+                    <LeafletMap className="leaflet-padded" center={[-37.788096, 175.317366]} zoom={this.state.zoom} ref={map => this.map = map} style={{ marginTop: 64, position: "relative", zIndex: 1 }}>
+                        
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -65,8 +89,11 @@ class Map extends Component {
                             fillOpacity={0.7}
                             center={position}
                         />
+                        
                         <Routing map={this.map}/>
+                        
                     </LeafletMap>
+                    </div>
                 </div>
             </Paper>
         );

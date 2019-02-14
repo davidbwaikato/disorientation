@@ -32,8 +32,8 @@ class Player extends Component {
         return (
             <Paper className="root">
                 <div style={{ paddingTop: 72 }}>
-                    <h5>Turn/tilt your phone or swipe using your finger to have a 360 look</h5>
-                    <ReactPlayer url="https://youtu.be/5gECD9ocfkE" width={w} height={h} playsinline />
+                    <h5 style={{ paddingLeft: 6 }}>Turn/tilt your phone or swipe using your finger to have a 360 look</h5>
+                    <ReactPlayer url="https://youtu.be/5gECD9ocfkE" width={w} height={h} playsinline controls playing />
                 </div>
             </Paper>
         )

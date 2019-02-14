@@ -1,12 +1,12 @@
 import React from "react";
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import MenuItem from 'material-ui/MenuItem';
-import { List, ListItem } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import Home from 'material-ui/svg-icons/action/home';
 import Directions from 'material-ui/svg-icons/maps/directions';
 import Settings from 'material-ui/svg-icons/action/settings';
+import Layers from 'material-ui/svg-icons/maps/layers';
 import Collections from 'material-ui/svg-icons/image/collections';
 import Person from 'material-ui/svg-icons/social/person';
 import Videocam from 'material-ui/svg-icons/av/videocam';
@@ -65,10 +65,10 @@ const Draw = (props) => {
         <Paper className="root">
             <Panel title="Menu" header={colour}></Panel>
             <MenuItem primaryText="Home" leftIcon={<Home />} onClick={() => history.push("/index")} />
-            <MenuItem primaryText="Geolocation" leftIcon={<Directions />} onClick={() => history.push("/geotracker")} />
+            <MenuItem primaryText="Map" leftIcon={<Directions />} onClick={() => history.push("/map")} />
+            <MenuItem primaryText="Heatmap" leftIcon={<Layers />} onClick={() => history.push("/heatmap")} />
             <MenuItem primaryText="Images" leftIcon={<Collections />} onClick={() => history.push("/images")} />
             <MenuItem primaryText="Video" leftIcon={<Videocam />} onClick={() => history.push("/video")} />
-            <MenuItem primaryText="Map" leftIcon={<Videocam />} onClick={() => history.push("/map")} />
             <MenuItem primaryText="Settings" leftIcon={<Settings />} onClick={() => history.push("/settings")} />
             <Divider />
             <Subheader inset={true}>Nested</Subheader>
