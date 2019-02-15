@@ -1,6 +1,7 @@
 import React from "react";
 import AppBar from 'material-ui/AppBar';
 import Menu from 'material-ui/svg-icons/navigation/menu';
+import { Switch, Route, Router, withRouter } from "react-router-dom";
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 
@@ -31,10 +32,11 @@ const Navbar = (props) => {
             />
         )
     } else if(props.toggle == false) {
+        
         return (
             <AppBar
                 style={styles.header}
-                title=""
+                title={this.location.pathname.substr(1).toUpperCase()}
                 onLeftIconButtonClick={props.onClick('left', true)} 
             />
         )
@@ -42,7 +44,7 @@ const Navbar = (props) => {
         return (
             <AppBar
                 style={styles.header}
-                title=""
+                title={this.location.pathname.substr(1).toUpperCase()}
                 iconElementRight={
                 <IconButton>
                     <FontIcon className="material-icons">menu</FontIcon>
