@@ -14,15 +14,22 @@ class Main extends Component {
             Meteor.appstate.muiTheme = redMuiTheme;
         }
         
-        if(Meteor.appstate.auth == false || Meteor.appstate.auth == null) {
-            return (
-                <Login />
-            )
-        } else if(Meteor.appstate.auth == true) {
+        // if(Meteor.appstate.auth == false || Meteor.appstate.auth == null) {
+        //     return (
+        //         <Login />
+        //     )
+        // } else
+
+         //if(!Meteor.call("users.login", Meteor.usr.userId, Meteor.usr.password)) {
             return (
                 <App />
             )
-        }
+        // }
+        // else{
+        //     return (
+        //         <Login />
+        //     )
+        // }
     }
 }
 

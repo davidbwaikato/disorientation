@@ -13,39 +13,54 @@ import "./appbar.css";
 class Settings extends Component {
     constructor(props) {
         super(props);
-        
-        this.state = { 
+
+        this.state = {
             left: false,
             right: false,
+            allowTracking: Meteor.appstate.allowtracking,
             openSecondary: this.props.openSecondary
         };
-        
+    
         this.onClick = this.onClick.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
+        this.handleToggle2 = this.handleToggle2.bind(this);
     }
-    
+
     onClick = (side, open) => () => {
         this.setState({ [side]: open });
     }
-    
+
     handleToggle(e) {
-        this.setState({ openSecondary: !this.state.openSecondary});
+        this.setState({ openSecondary: !this.state.openSecondary });
         this.props.handleToggle(this.state.openSecondary);
     }
-    
+    handleToggle2(e) {
+        this.setState({ allowTracking: !this.state.allowTracking });
+      //  this.props.handleToggle2(this.state.allowTracking);
+      Meteor.appstate.allowtracking = this.state.allowTracking;
+   
+    }
+
     render() {
-        
-        return(
+
+        return (
             <Paper className="root">
                 <div style={{ paddingTop: 72 }}>
                     <List>
                         <Subheader>Settings</Subheader>
-                        <ListItem 
-                            primaryText="Sidebar Anchored to Right" 
-                            rightToggle={<Toggle 
+                        <ListItem
+                            primaryText="Sidebar Anchored to Right"
+                            rightToggle={<Toggle
                                 onToggle={this.handleToggle}
                                 toggled={this.state.openSecondary}
-                            />} 
+                            />}
+                        />
+                        <ListItem
+                            primaryText="Allow Tracking"
+                            rightToggle={<Toggle
+                                onToggle={this.handleToggle2}
+                                toggled={this.state.allowTracking}
+                            />}
                         />
                     </List>
                     <Divider />

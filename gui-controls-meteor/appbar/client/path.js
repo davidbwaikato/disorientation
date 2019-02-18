@@ -62,6 +62,7 @@ class Path extends Component {
                         exact path='/settings'
                         render={(props) => <Settings {...props}
                             handleToggle={this.props.handleToggle}
+                            handleToggle2={this.props.handleToggle2}
                         />}
                     />
                     <Route

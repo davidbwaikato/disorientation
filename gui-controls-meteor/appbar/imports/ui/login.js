@@ -3,6 +3,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import ReactDOM, { render } from "react-dom";
 import { Link } from 'react-router-dom'
 
+import { Users } from '../api/users.js';
 import Path from "../../client/path.js";
 import App from "./app.js"
 
@@ -26,11 +27,11 @@ const styles = {
 function validate(id, password) {
     const errors = [];
     const num = /^[0-9\b]+$/;
-    
-    if (id.length != 7 ) {
-        errors.push("ID must be 7 digits long");
+
+    if (id.length != 7) {
+        errors.push("ID must be 5 digits long");
     }
-    
+
     if (!num.test(id)) {
         errors.push("ID must be a number");
     }
@@ -46,38 +47,47 @@ function validate(id, password) {
 class Login extends Component {
     constructor(props) {
         super(props)
-        
+        Meteor.USRS = Users;
         this.state = {
             id: "",
             password: "",
-            
+
             errors: []
         };
-        
+
         Meteor.appstate.auth = false;
     }
-    
+
     handleChange = e => {
         this.setState({
             [e.target.id]: e.target.value
         });
     }
-    
+
     handleSubmit = e => {
         const { id, password } = this.state;
 
         const errors = validate(id, password);
-        
         if (errors.length > 0) {
             e.preventDefault();
             this.setState({ errors });
             return;
         } else {
             Meteor.appstate.auth = true;
+            // Meteor.usr = Meteor.call("users.login", id, password);
+            // if (Meteor.usr == null) {
+            //     e.preventDefault();
+            //     this.setState({ error: ["Invalid Password!"]});
+            //     return;
+            // }
+            // else{
+            //     Meteor.appstate.userId = usr.id;
+            //     Meteor.appstate.password = usr.password;
+            // }
             <App />
         }
     }
-    
+
     render() {
         const { errors } = this.state;
         return (
@@ -118,7 +128,7 @@ class Login extends Component {
                             type="submit"
                             onClick={this.handleSubmit}
                         >
-                        Login
+                            Login
                         </Button>
                     </div>
                 </form>

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {Users} from '../api/users';
 
 import Path from "../../client/path.js";
 import Login from "./login.js";
@@ -13,23 +14,28 @@ import Main from "./main.js";
 class App extends Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {
             left: false,
             right: false,
             toggle: Meteor.appstate.toggle,
+            allowtracking: Meteor.appstate.allowtracking,
             muiTheme: Meteor.appstate.muiTheme,
             muiThemeS: Meteor.appstate.muiThemeS,
         };
-
+        if (Meteor.appstate.allowtracking == null)
+        Meteor.appstate.allowtracking = false;
         this.onToggle = this.onToggle.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
+        this.handleToggle2 = this.handleToggle2.bind(this);
         this.handleTheme = this.handleTheme.bind(this);
         this.onLogin = this.onLogin.bind(this);
     }
 
     onLogin(e) {
         Meteor.appstate.auth = false;
+        Meteor.appstate.allowtracking = false;
+        //Meteor.stappsate.usr = null;
     }
 
     onToggle = (side, open) => () => {
@@ -39,6 +45,10 @@ class App extends Component {
     handleToggle(openSecondary) {
         this.setState({ toggle: !this.state.toggle });
         Meteor.appstate.toggle = !this.state.toggle;
+    }
+    handleToggle2(allowtracking) {
+        this.setState({ allowtracking: !this.state.allowtracking });
+        Meteor.appstate.allowtracking = this.state.allowtracking;
     }
 
     handleTheme(e) {
@@ -73,7 +83,7 @@ class App extends Component {
     render() {
         const toggle = this.state.toggle;
 
-        if (Meteor.appstate.auth == true) {
+        if (/*Meteor.call("users.login", Meteor.appstate.userId, Meteor.appstate.password) != null*/ Meteor.appstate.auth == true) {
             return (
                 <MuiThemeProvider muiTheme={getMuiTheme(this.state.muiTheme)}>
                     <div>

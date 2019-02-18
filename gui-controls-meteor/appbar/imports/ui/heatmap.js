@@ -29,6 +29,8 @@ class Heatmap extends Component {
     constructor(props) {
         super(props);
 
+        if (Meteor.appstate.allowtracking == null)
+            Meteor.appstate.allowtracking = false;
         this.state = {
             left: false,
             right: false,
@@ -41,7 +43,7 @@ class Heatmap extends Component {
             addedHeatmap: false
 
         };
-      
+
         this.cfg = {
             "radius": 0.0001,
             "maxOpacity": .8,
@@ -56,11 +58,38 @@ class Heatmap extends Component {
         };
         this.heatmapLayer = new HeatmapOverlay(this.cfg);
         Meteor.map = this;
-      
+
         this.onClick = this.onClick.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
     }
+    getLocation() {
+        var latLng = new ReactiveVar();
 
+        this.track = Tracker.autorun(() => {
+            latLng.set(Geolocation.latLng());
+            if (latLng.get()) {
+
+
+                this.setState({
+                    //Write latitude to console and alter textbox value
+                    latitude: latLng.curValue.lat,
+                    //Write longitude to console and alter textbox value
+                    longitude: latLng.curValue.lng,
+                    error: null,
+                });
+                if (Meteor.appstate.allowtracking == true) {
+                    fetch('https://json.geoiplookup.io').then(function (response) { return response.json(); }).then(function (data) {
+                        // HP.insert({createdAt: new Date(), lat: latLng.curValue.lat, long: latLng.curValue.long, src: 'json.geoiplookup/api', ip: data.ip, host: data.hostname, stordat: data.district + ", " + data.country_code });
+                        if (latLng != undefined)
+                            Meteor.call("hotpoints.insertv2", data, latLng);
+                    })
+
+
+                }
+            }
+        });
+
+    }
     onClick = (side, open) => () => {
         this.setState({ [side]: open });
     }
@@ -91,7 +120,7 @@ class Heatmap extends Component {
                     </Card>
                 </div>
                 <Divider /> */}
-                <div className="cmh_v-flex-align-child" style={{ "margin": "20px 10px", "paddingTop": "72px"}}>
+                <div className="cmh_v-flex-align-child" style={{ "margin": "20px 10px", "paddingTop": "72px" }}>
                     <LeafletMap className="leaflet-padded" center={position} zoom={this.state.zoom} ref={map => this.map = map} >
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -112,6 +141,22 @@ class Heatmap extends Component {
     componentDidUpdate() {
         this.updateCanvas();
     }
+    componentDidMount() {
+        //https://www.google.com/maps
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.getLocation();
+                this.setState({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    error: null,
+                });
+            },
+            (error) => this.setState({ error: error.message }),
+            { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+        );
+        this.updateCanvas();
+    }
     updateCanvas() {
         if (!this.state.addedHeatmap && this.map != null && this.map != undefined) {
             this.state.addedHeatmap = true;
@@ -126,11 +171,12 @@ class Heatmap extends Component {
 export default withTracker(() => {
     Meteor.subscribe("hotpoints");
     Meteor.HP = HP;
-    var h = HP.find({}).fetch();
+
+    var h = Meteor.HP.find({}).fetch();
     var max = 0; var min = Number.MAX_SAFE_INTEGER;
-    for(var e of h){
-        min = Math.min(e.value,min);
-        max = Math.max(e.value,max);
+    for (var e of h) {
+        min = Math.min(e.value, min);
+        max = Math.max(e.value, max);
     }
     return {
         hotpoints: {
@@ -139,6 +185,7 @@ export default withTracker(() => {
             max: max
         }
     }
+
 }
 
 
