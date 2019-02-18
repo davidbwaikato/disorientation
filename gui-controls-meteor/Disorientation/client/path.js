@@ -11,6 +11,7 @@ import SettingsTheme from "../imports/ui/settingsTheme.js";
 import Login from "../imports/ui/login.js";
 import Maps from "../imports/ui/map.js";
 import Heatmap from '../imports/ui/heatmap.js';
+import Map3D from '../imports/ui/map3d.js';
 import history from "./history";
 
 class Path extends Component { 
@@ -25,6 +26,7 @@ class Path extends Component {
                     <Route exact path='/video' component={VPlayer} />  
                     <Route exact path='/map' component={Maps} />
                     <Route exact path='/heatmap' component={Heatmap} />
+                    <Route exact path='/map3d' component={Map3D} />
                     <Route
                         exact path='/settings'
                         render={(props) => <Settings {...props}

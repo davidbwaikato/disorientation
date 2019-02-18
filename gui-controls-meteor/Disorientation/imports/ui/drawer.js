@@ -71,7 +71,8 @@ const Draw = (props) => {
                 primaryTogglesNestedList={true}
                 nestedItems={[
                     <MenuItem key={1} primaryText="2D Map" leftIcon={<Directions />} onClick={() => history.push("/map")} />,
-                    <MenuItem key={2} primaryText="Heatmap" leftIcon={<Layers />} onClick={() => history.push("/heatmap")} />
+                    <MenuItem key={2} primaryText="3D Map" leftIcon={<Layers />} onClick={() => history.push("/map3d")} />,
+                    <MenuItem key={3} primaryText="Heatmap" leftIcon={<Layers />} onClick={() => history.push("/heatmap")} />
                 ]}
             />
             <MenuItem primaryText="Images" leftIcon={<Collections />} onClick={() => history.push("/images")} />
