@@ -55,6 +55,8 @@ class Settings extends Component {
                                 toggled={this.state.openSecondary}
                             />}
                         />
+                        {//Switch allows tracking to be toggled, tracking toggle saved in local app storage
+                        }
                         <ListItem
                             primaryText="Allow Tracking"
                             rightToggle={<Toggle
