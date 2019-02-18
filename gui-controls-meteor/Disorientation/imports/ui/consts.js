@@ -1,0 +1,1 @@
+export var MAPBOX_TOKEN = "pk.eyJ1IjoicGhhbnVlbCIsImEiOiJjanJoN2JsOGMwOTFkNDRubnl2bDJ2aHBvIn0.FNGcAec1EdKT4VzS5KfZzg";
