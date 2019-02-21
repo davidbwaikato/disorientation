@@ -10,6 +10,7 @@ class Main extends Component {
     render() {       
         if(Meteor.appstate.toggle == null) {
             Meteor.appstate.toggle = false;
+            Meteor.appstate.allowtracking = false;
         }
         if(Meteor.appstate.muiTheme == null) {
             Meteor.appstate.muiThemeS = "redMuiTheme";

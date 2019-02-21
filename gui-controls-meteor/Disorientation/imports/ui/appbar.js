@@ -34,7 +34,6 @@ const Navbar = (props) => {
         return (
             <AppBar
                 style={styles.header}
-                title=""
                 onLeftIconButtonClick={props.onClick('left', true)} 
             />
         )
@@ -42,7 +41,6 @@ const Navbar = (props) => {
         return (
             <AppBar
                 style={styles.header}
-                title=""
                 iconElementRight={
                 <IconButton>
                     <FontIcon className="material-icons">menu</FontIcon>

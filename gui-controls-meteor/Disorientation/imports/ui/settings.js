@@ -15,19 +15,10 @@ class Settings extends Component {
         this.state = { 
             left: false,
             right: false,
-            openSecondary: this.props.openSecondary
         };
-
-        this.handleToggle = this.handleToggle.bind(this);
     }
 
-    handleToggle(e) {
-        this.setState({ openSecondary: !this.state.openSecondary});
-        this.props.handleToggle(this.state.openSecondary);
-    }
-    
     render() {
-        
         return(
             <Paper className="root">
                 <div style={{ paddingTop: 72 }}>
@@ -36,9 +27,16 @@ class Settings extends Component {
                         <ListItem 
                             primaryText="Sidebar Anchored to Right" 
                             rightToggle={<Toggle 
-                                onToggle={this.handleToggle}
-                                toggled={this.state.openSecondary}
+                                onToggle={this.props.handleToggle}
+                                toggled={this.props.openSecondary}
                             />} 
+                        />
+                        <ListItem
+                            primaryText="Allow Tracking"
+                            rightToggle={<Toggle
+                                onToggle={this.props.handleToggle2}
+                                toggled={this.props.allowTracking}
+                            />}
                         />
                     </List>
                     <Divider />

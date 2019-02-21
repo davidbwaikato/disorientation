@@ -30,7 +30,10 @@ class Path extends Component {
                     <Route
                         exact path='/settings'
                         render={(props) => <Settings {...props}
+                            openSecondary={this.props.toggle}
+                            allowTracking={this.props.allowTracking}
                             handleToggle={this.props.handleToggle}
+                            handleToggle2={this.props.handleToggle2}
                         />}
                     />
                     <Route

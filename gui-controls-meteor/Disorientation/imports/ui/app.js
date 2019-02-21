@@ -16,19 +16,23 @@ class App extends Component {
         this.state = {
             left: false,
             right: false,
+            allowtracking: Meteor.appstate.allowtracking,
             toggle: Meteor.appstate.toggle,
             muiTheme: Meteor.appstate.muiTheme,
             muiThemeS: Meteor.appstate.muiThemeS,
         };
-
+        if (Meteor.appstate.allowtracking == null)
+        Meteor.appstate.allowtracking = false;
         this.onToggle = this.onToggle.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
+        this.handleToggle2 = this.handleToggle2.bind(this);
         this.handleTheme = this.handleTheme.bind(this);
         this.onLogin = this.onLogin.bind(this);
     }
 
     onLogin(e) {
         Meteor.appstate.auth = false;
+        Meteor.appstate.allowtracking = false;
     }
 
     onToggle = (side, open) => () => {
@@ -38,6 +42,11 @@ class App extends Component {
     handleToggle(openSecondary) {
         this.setState({ toggle: !this.state.toggle });
         Meteor.appstate.toggle = !this.state.toggle;
+    }
+
+    handleToggle2(allowtracking) {
+        this.setState({ allowtracking: !this.state.allowtracking });
+        Meteor.appstate.allowtracking = !this.state.allowtracking;
     }
 
     handleTheme(e) {
@@ -60,12 +69,6 @@ class App extends Component {
                 this.setState({ muiTheme: darkMuiTheme });
                 Meteor.appstate.muiTheme = darkMuiTheme;
                 break;
-            case "callumMuiTheme":
-                this.setState({ muiThemeS: e });
-                Meteor.appstate.muiThemeS = "callumMuiTheme";
-                this.setState({ muiTheme: callumMuiTheme });
-                Meteor.appstate.muiTheme = callumMuiTheme;
-                break;
         }
     }
 
@@ -76,7 +79,7 @@ class App extends Component {
                 <MuiThemeProvider muiTheme={getMuiTheme(this.state.muiTheme)}>
                     <div>
                         <Navbar onClick={this.onToggle} toggle={this.state.toggle} />
-                        <Path handleToggle={this.handleToggle} handleTheme={this.handleTheme} theme={this.state.muiThemeS} />
+                        <Path handleToggle={this.handleToggle} handleToggle2={this.handleToggle2} handleTheme={this.handleTheme} theme={this.state.muiThemeS} toggle={this.state.toggle} allowTracking={this.state.allowtracking} />
                         <Draw
                             toggleDrawer={this.onToggle}
                             left={this.state.left}

@@ -73,14 +73,6 @@ class SettingsTheme extends Component {
                                 uncheckedIcon={<Empty />}
                                 style={styles.button}
                         />
-                        <RadioButton
-                                label="Callum's Theme"
-                                value="callumMuiTheme"
-                                onClick={this.onClick}
-                                checkedIcon={<Done />}
-                                uncheckedIcon={<Empty />}
-                                style={styles.button}
-                        />
                     </RadioButtonGroup>
                 </div>
             </Paper>
