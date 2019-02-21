@@ -17,10 +17,12 @@ import { CardContent, Typography, Checkbox } from "@material-ui/core";
 import { LatLngBounds } from "leaflet";
 import { convertHexToRGB } from "material-ui/utils/colorManipulator";
 
+//See Jane's comments
 const {
     Map: LeafletMap, TileLayer, Marker, Popup, CircleMarker, SVG,
 } = ReactLeaflet
 
+///HEATMAP COMPONENT
 class Heatmap extends Component {
 
     constructor(props) {
@@ -39,22 +41,23 @@ class Heatmap extends Component {
         };
 
         this.cfg = {
-            "radius": 0.0001,
+            "radius": 0.0001, //Radius of heatmap
             "maxOpacity": .8,
             "minOpactiy": .2,
-            "scaleRadius": true,
-            "useLocalExtrema": false,
-            "latField": 'lat',
-            "lngField": 'lng',
-            "valueField": 'value'
+            "scaleRadius": true, //Scale with zoom, if false, will display in radius pixels
+            "useLocalExtrema": false, //True: Heatmap peaks relative to onscreen points, false: Global
+            "latField": 'lat', //Mongo DB field 'lat'
+            "lngField": 'lng', //Mongo DB field 'lng' //Mapped into array Below (EoF)
+            "valueField": 'value' //Mono DB field 'value'
             //HAS TO BE REDONE SO PTS ADD VALUE, NOT THEMSELVES
             //DONE 14/02/19
         };
+        //See https://www.patrick-wied.at/static/heatmapjs/example-heatmap-leaflet.html
         this.heatmapLayer = new HeatmapOverlay(this.cfg);
         Meteor.map = this;
-
-        this.onClick = this.onClick.bind(this);
     }
+    
+    //Tracks user location
     getLocation() {
         var latLng = new ReactiveVar();
 
@@ -64,17 +67,14 @@ class Heatmap extends Component {
 
 
                 this.setState({
-                    //Write latitude to console and alter textbox value
-                    latitude: latLng.curValue.lat,
-                    //Write longitude to console and alter textbox value
+                    latitude: latLng.curValue.lat, //Probaly not needed
                     longitude: latLng.curValue.lng,
                     error: null,
                 });
-                if (Meteor.appstate.allowtracking == true) {
-                    fetch('https://json.geoiplookup.io').then(function (response) { return response.json(); }).then(function (data) {
-                        // HP.insert({createdAt: new Date(), lat: latLng.curValue.lat, long: latLng.curValue.long, src: 'json.geoiplookup/api', ip: data.ip, host: data.hostname, stordat: data.district + ", " + data.country_code });
+                if (Meteor.appstate.allowtracking == true) { //If user has given tracking permission
+                    fetch('https://json.geoiplookup.io').then(function (response) { return response.json(); }).then(function (data) { //Gets IP data
                         if (latLng != undefined)
-                            Meteor.call("hotpoints.insertv2", data, latLng);
+                            Meteor.call("hotpoints.insertv2", data, latLng); //Defined in api/hotmap.js
                     })
 
 
@@ -83,16 +83,10 @@ class Heatmap extends Component {
         });
 
     }
-    onClick = (side, open) => () => {
-        this.setState({ [side]: open });
-    }
-    
+
+    //Main Render Method
     render() {
-        var w = window.innerWidth;
-        var h = window.innerHeight - 64;
         var position = [this.state.lat, this.state.lng];
-        var southWest = [{ lat: -37.790545 }, { lng: 175.308736 }];
-        var northEast = [{ lat: -37.7849526 }, { lng: 175.3226781 }];
         return (
             <Paper className="root cmh_v-flex-align-wrapper">
                 <div className="cmh_v-flex-align-child" style={{ "margin": "20px 10px", "paddingTop": "72px" }}>
@@ -113,6 +107,7 @@ class Heatmap extends Component {
             </Paper>
         );
     }
+    //On component update (After render or state change)
     componentDidUpdate() {
         this.updateCanvas();
     }
@@ -132,6 +127,7 @@ class Heatmap extends Component {
         );
         this.updateCanvas();
     }
+    //Adds Heatmap to canvas if not already added
     updateCanvas() {
         if (!this.state.addedHeatmap && this.map != null && this.map != undefined) {
             this.state.addedHeatmap = true;
@@ -142,7 +138,20 @@ class Heatmap extends Component {
         }
     }
 }
+//See meteor website examples
+//Watches MongoDB 'hotpoints' collection for changes
+//Returns Tasks in format that Heatmap.js understands - see heatmap config above.
 
+////////////////////////////////////////////////////////////////////////////////////
+// FOR SOME MYSTERIOUS REASON                                                     //
+//                                                                                //
+// This code broke below, specifically 'meteor.hp.find({}).fetch()' broke         //
+// at the last minute, this refuses to download any documents from the collection,//
+// however when run in console has no issues                                      //
+//                                                                                //
+// Suggestion: Maybe remove tracker and do manually in updatecanvas method? Is    //
+// Tracker even needed?                                                           //
+////////////////////////////////////////////////////////////////////////////////////
 export default withTracker(() => {
     Meteor.subscribe("hotpoints");
     Meteor.HP = HP;
@@ -155,9 +164,9 @@ export default withTracker(() => {
     }
     return {
         hotpoints: {
-            data: h,
-            min: min,
-            max: max
+            data: h, //[{value: ..., lat:..., lng:...}, {...}] format, see mongo db
+            min: min, //minimum 'value' for heatmap concentration
+            max: max //max 'value' for heatmap concentration
         }
     }
 
